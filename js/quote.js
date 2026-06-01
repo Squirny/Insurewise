@@ -53,7 +53,29 @@
     var low=base*0.85, high=base*1.2;
     document.getElementById('quoteRange').textContent = fmt(low) + ' – ' + fmt(high);
     show(4);
-    // INTEGRATION POINT: send {state, company, email, phone} to your CRM / email service here.
+
+    // ---- Send the lead to the backend (Google Sheet + WhatsApp) ----
+    var coverLabels={eb:'Employee Benefits',property:'Property',liability:'Liability',cargo:'Cargo & Marine'};
+    var indSel=document.getElementById('industry');
+    var empSel=document.getElementById('employees');
+    var lead={
+      cover: coverLabels[state.cover] || state.cover,
+      industry: indSel.options[indSel.selectedIndex].text,
+      employees: empSel.options[empSel.selectedIndex].text,
+      sumInsured: (state.cover==='eb') ? 'N/A' : document.getElementById('sumInsured').options[document.getElementById('sumInsured').selectedIndex].text,
+      company: document.getElementById('company').value.trim(),
+      email: email,
+      phone: document.getElementById('phone').value.trim(),
+      estimate: fmt(low)+' – '+fmt(high),
+      page: location.href,
+      submittedAt: new Date().toISOString()
+    };
+    // Fire-and-forget; the user still sees their estimate even if this fails.
+    fetch('/api/lead',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(lead)
+    }).catch(function(){ /* network/endpoint not configured yet */ });
   });
 
   // if cover pre-set, mark it
