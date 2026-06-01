@@ -1,0 +1,109 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Get an Instant Insurance Quote | Insurewise Indonesia</title>
+<meta name="description" content="Get a free indicative business insurance quote in minutes. Add a few basic details about your company and see an estimated premium for employee benefits, property, liability or cargo cover.">
+<meta name="keywords" content="insurance quote Indonesia, asuransi penawaran, employee benefit quote, property insurance quote, business insurance estimate">
+<link rel="canonical" href="https://www.insurewise.club/quote.html">
+<link rel="icon" href="assets/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head><body>
+<header class="site"><div class="wrap nav">
+<a class="logo" href="index.html"><img src="assets/logo.svg" alt="Insurewise logo"></a>
+<ul class="nav-links">
+<li><a href="products/employee-benefits.html" data-en="Employee Benefits" data-id="Employee Benefit">Employee Benefits</a></li>
+<li><a href="products/property.html" data-en="Property" data-id="Properti">Property</a></li>
+<li><a href="products/liability.html" data-en="Liability" data-id="Liabilitas">Liability</a></li>
+<li><a href="products/cargo.html" data-en="Cargo" data-id="Kargo">Cargo</a></li>
+<li><a href="about.html" data-en="About" data-id="Tentang">About</a></li></ul>
+<div class="nav-right"><div class="langtoggle"><button data-lang-btn="en" class="active">EN</button><button data-lang-btn="id">ID</button></div>
+<button class="burger" aria-label="Menu">☰</button></div></div></header>
+
+<section class="section"><div class="wrap quote-shell">
+<div class="center" style="margin-bottom:28px">
+<span class="eyebrow" data-en="Free • No obligation" data-id="Gratis • Tanpa kewajiban">Free • No obligation</span>
+<h1 data-en="Get your indicative quote" data-id="Dapatkan estimasi penawaran Anda">Get your indicative quote</h1>
+<p class="lead" data-en="Answer a few quick questions. We'll show an estimated premium range instantly." data-id="Jawab beberapa pertanyaan singkat. Kami tampilkan estimasi kisaran premi secara instan.">Answer a few quick questions. We'll show an estimated premium range instantly.</p>
+</div>
+
+<div class="progress"><div class="p on"></div><div class="p"></div><div class="p"></div><div class="p"></div></div>
+
+<form id="qform">
+  <!-- step 1 -->
+  <div class="qstep active" data-step="1">
+    <h3 data-en="1. What cover do you need?" data-id="1. Perlindungan apa yang Anda butuhkan?">1. What cover do you need?</h3>
+    <div class="opts" data-group="cover">
+      <div class="opt" data-val="eb"><span class="e">👥</span><span data-en="Employee Benefits" data-id="Employee Benefit">Employee Benefits</span></div>
+      <div class="opt" data-val="property"><span class="e">🏢</span><span data-en="Property" data-id="Properti">Property</span></div>
+      <div class="opt" data-val="liability"><span class="e">⚖️</span><span data-en="Liability" data-id="Liabilitas">Liability</span></div>
+      <div class="opt" data-val="cargo"><span class="e">🚢</span><span data-en="Cargo & Marine" data-id="Kargo & Marine">Cargo & Marine</span></div>
+    </div>
+    <div class="qnav"><span></span><button type="button" class="btn btn-blue" data-next disabled data-en="Next →" data-id="Lanjut →">Next →</button></div>
+  </div>
+
+  <!-- step 2 -->
+  <div class="qstep" data-step="2">
+    <h3 data-en="2. About your company" data-id="2. Tentang perusahaan Anda">2. About your company</h3>
+    <div class="field"><label data-en="Industry" data-id="Industri">Industry</label>
+      <select id="industry">
+        <option value="1" data-en="Trading & Retail" data-id="Perdagangan & Ritel">Trading & Retail</option>
+        <option value="1.25" data-en="Manufacturing" data-id="Manufaktur">Manufacturing</option>
+        <option value="1.35" data-en="Logistics & Transport" data-id="Logistik & Transportasi">Logistics & Transport</option>
+        <option value="0.9" data-en="Services & Technology" data-id="Jasa & Teknologi">Services & Technology</option>
+        <option value="1.15" data-en="F&B / Hospitality" data-id="F&B / Perhotelan">F&B / Hospitality</option>
+        <option value="1.3" data-en="Construction" data-id="Konstruksi">Construction</option>
+      </select></div>
+    <div class="field"><label data-en="Number of employees" data-id="Jumlah karyawan">Number of employees</label>
+      <select id="employees"><option value="15">1–25</option><option value="60">26–100</option><option value="250">101–500</option><option value="750">500+</option></select></div>
+    <div class="field" id="sumInsuredField"><label data-en="Approx. sum insured / asset value (IDR)" data-id="Perkiraan nilai pertanggungan / aset (IDR)">Approx. sum insured / asset value (IDR)</label>
+      <select id="sumInsured">
+        <option value="1000000000" data-en="Under Rp 1 billion" data-id="Di bawah Rp 1 miliar">Under Rp 1 billion</option>
+        <option value="5000000000" data-en="Rp 1–5 billion" data-id="Rp 1–5 miliar">Rp 1–5 billion</option>
+        <option value="15000000000" data-en="Rp 5–25 billion" data-id="Rp 5–25 miliar">Rp 5–25 billion</option>
+        <option value="50000000000" data-en="Over Rp 25 billion" data-id="Di atas Rp 25 miliar">Over Rp 25 billion</option>
+      </select></div>
+    <div class="qnav"><button type="button" class="btn btn-ghost" data-prev data-en="← Back" data-id="← Kembali">← Back</button><button type="button" class="btn btn-blue" data-next data-en="Next →" data-id="Lanjut →">Next →</button></div>
+  </div>
+
+  <!-- step 3 -->
+  <div class="qstep" data-step="3">
+    <h3 data-en="3. Your details" data-id="3. Data Anda">3. Your details</h3>
+    <p data-en="We'll send your full quote and tailored options here. No spam." data-id="Kami akan mengirim penawaran lengkap dan opsi yang disesuaikan ke sini. Tanpa spam.">We'll send your full quote and tailored options here. No spam.</p>
+    <div class="field"><label data-en="Company name" data-id="Nama perusahaan">Company name</label><input id="company" type="text" data-en="PT Your Company" data-id="PT Perusahaan Anda" placeholder="PT Your Company"></div>
+    <div class="field"><label data-en="Work email" data-id="Email kerja">Work email</label><input id="email" type="email" placeholder="you@company.co.id"></div>
+    <div class="field"><label data-en="Phone / WhatsApp" data-id="Telepon / WhatsApp">Phone / WhatsApp</label><input id="phone" type="tel" placeholder="+62..."></div>
+    <div class="qnav"><button type="button" class="btn btn-ghost" data-prev data-en="← Back" data-id="← Kembali">← Back</button><button type="button" class="btn btn-primary" id="calcBtn" data-en="See my quote →" data-id="Lihat penawaran saya →">See my quote →</button></div>
+  </div>
+
+  <!-- step 4 result -->
+  <div class="qstep" data-step="4">
+    <div class="result">
+      <small data-en="Estimated annual premium" data-id="Estimasi premi tahunan">Estimated annual premium</small>
+      <div class="big" id="quoteRange">—</div>
+      <small id="quoteNote" data-en="Indicative estimate only" data-id="Hanya estimasi indikatif">Indicative estimate only</small>
+    </div>
+    <div style="background:var(--blue-light);border-radius:14px;padding:22px;margin-top:20px">
+      <strong data-en="What happens next" data-id="Langkah selanjutnya">What happens next</strong>
+      <ul class="ticks" style="margin-top:10px">
+        <li data-en="An Insurewise advisor reviews your needs" data-id="Penasihat Insurewise meninjau kebutuhan Anda">An Insurewise advisor reviews your needs</li>
+        <li data-en="We compare quotes from 12+ insurers" data-id="Kami membandingkan penawaran dari 12+ asuransi">We compare quotes from 12+ insurers</li>
+        <li data-en="You receive a firm quote, usually within 1 business day" data-id="Anda menerima penawaran final, biasanya dalam 1 hari kerja">You receive a firm quote, usually within 1 business day</li>
+      </ul>
+    </div>
+    <div class="qnav" style="margin-top:18px">
+      <button type="button" class="btn btn-ghost" data-prev data-en="← Adjust" data-id="← Ubah">← Adjust</button>
+      <a href="mailto:hello@insurewise.club" class="btn btn-blue" data-en="Talk to an advisor" data-id="Hubungi penasihat">Talk to an advisor</a>
+    </div>
+    <p class="disclaimer" style="color:var(--muted);margin-top:18px" data-en="This figure is an indicative estimate generated from the basic details provided and is not a binding offer. Final premiums depend on insurer underwriting, claims history and full risk details." data-id="Angka ini adalah estimasi indikatif berdasarkan data dasar yang diberikan dan bukan penawaran mengikat. Premi final bergantung pada underwriting asuransi, riwayat klaim, dan detail risiko lengkap.">This figure is an indicative estimate generated from the basic details provided and is not a binding offer. Final premiums depend on insurer underwriting, claims history and full risk details.</p>
+  </div>
+</form>
+</div></section>
+
+<footer class="site"><div class="wrap"><div class="fbottom" style="border:0">
+<span>© 2026 Insurewise. <span data-en="Indicative quotes are not binding offers." data-id="Penawaran indikatif bukan penawaran mengikat.">Indicative quotes are not binding offers.</span></span>
+<span><a href="index.html" style="color:#9fb2c9" data-en="← Back to home" data-id="← Kembali ke beranda">← Back to home</a></span>
+</div></div></footer>
+<script src="js/main.js"></script>
+<script src="js/quote.js"></script>
+</body></html>
