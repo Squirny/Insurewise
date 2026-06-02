@@ -98,17 +98,19 @@
      note_en/note_id : one-line highlight (optional)
    The two marked //verify are from public listings — confirm before relying.
 =========================================================================== */
+// Figures below are from each insurer's public product pages / listings (2025-26)
+// and are INDICATIVE — they vary by plan and change over time. Verify before relying.
 var INSURERS = [
-  { name:"Zurich",       limit:"", hospitals:"", entryAge:"", renewAge:"", note_en:"Strong corporate & SME health plans", note_id:"Plan kesehatan korporat & UKM yang kuat" },
-  { name:"AXA",          limit:"Rp 25 M", hospitals:"7,400+", entryAge:"65", renewAge:"80", note_en:"Wide hospital network, high limits", note_id:"Jaringan RS luas, limit tinggi" }, //verify
-  { name:"Allianz",      limit:"", hospitals:"", entryAge:"", renewAge:"", note_en:"Comprehensive group medical", note_id:"Medis kelompok menyeluruh" },
-  { name:"AIA",          limit:"", hospitals:"", entryAge:"", renewAge:"", note_en:"Health + life bundling options", note_id:"Opsi gabungan kesehatan + jiwa" },
-  { name:"Tokio Marine", limit:"", hospitals:"", entryAge:"", renewAge:"", note_en:"Reliable cashless service", note_id:"Layanan cashless andal" },
-  { name:"Hanwha",       limit:"", hospitals:"", entryAge:"", renewAge:"", note_en:"Competitive SME pricing", note_id:"Harga UKM kompetitif" },
-  { name:"Sunday",       limit:"", hospitals:"", entryAge:"", renewAge:"", note_en:"Digital-first, flexible plans", note_id:"Digital-first, plan fleksibel" },
-  { name:"ACA",          limit:"", hospitals:"", entryAge:"", renewAge:"", note_en:"Established local insurer", note_id:"Asuransi lokal terpercaya" },
-  { name:"Lippo (LGI)",  limit:"Rp 300 jt", hospitals:"1,200+", entryAge:"60", renewAge:"65", note_en:"HealthPlus group plans", note_id:"Plan kelompok HealthPlus" }, //verify
-  { name:"Mandiri",      limit:"", hospitals:"", entryAge:"", renewAge:"", note_en:"Bank-backed health cover", note_id:"Asuransi kesehatan dukungan bank" }
+  { name:"AXA",          limit:"Rp 25 M",      hospitals:"7,400+", entryAge:"65", renewAge:"80", note_en:"SmartCare Executive — wide network, high limits", note_id:"SmartCare Executive — jaringan luas, limit tinggi" },
+  { name:"Zurich",       limit:"Rp 2 M – 16 M",hospitals:"Nationwide + overseas", entryAge:"70", renewAge:"", note_en:"Pro-Care group plans, 4 tiers", note_id:"Plan kelompok Pro-Care, 4 tingkatan" },
+  { name:"Allianz",      limit:"",             hospitals:"AdMedika network", entryAge:"65", renewAge:"70", note_en:"SmartHealth group — from 10 members", note_id:"SmartHealth kelompok — mulai 10 peserta" },
+  { name:"Mandiri",      limit:"",             hospitals:"7,600+", entryAge:"", renewAge:"", note_en:"Mandiri Inhealth — large provider network", note_id:"Mandiri Inhealth — jaringan provider luas" },
+  { name:"AIA",          limit:"",             hospitals:"Extensive (AdMedika)", entryAge:"", renewAge:"", note_en:"Employee Benefit health & life", note_id:"Employee Benefit kesehatan & jiwa" },
+  { name:"Lippo (LGI)",  limit:"Rp 300 jt",    hospitals:"1,200+", entryAge:"60", renewAge:"65", note_en:"HealthPlus Business Essential", note_id:"HealthPlus Business Essential" },
+  { name:"ACA",          limit:"",             hospitals:"", entryAge:"64", renewAge:"", note_en:"Medi+ group — from 25 participants", note_id:"Medi+ kelompok — mulai 25 peserta" },
+  { name:"Hanwha",       limit:"",             hospitals:"", entryAge:"", renewAge:"", note_en:"Group health, premium from Rp395k/member", note_id:"Kesehatan kelompok, premi mulai Rp395rb/peserta" },
+  { name:"Sunday",       limit:"",             hospitals:"", entryAge:"", renewAge:"", note_en:"Digital group health — from 3 employees", note_id:"Kesehatan kelompok digital — mulai 3 karyawan" },
+  { name:"Tokio Marine", limit:"",             hospitals:"", entryAge:"", renewAge:"", note_en:"Life & employee benefits", note_id:"Asuransi jiwa & employee benefit" }
 ];
 
 (function(){
