@@ -12,13 +12,16 @@
   /* Property All Risks (PAR) rate build-up — general/standard risk benchmark.
      Each peril is rated on the sum insured (rate) plus an optional flat amount.
      Derived from the supplied simulator (Rp2bn example => Rp6,818,040 total). */
+  /* Property All Risks rate build-up — benchmark from Tokio Marine UKM Partner /
+     PAR + Earthquake policy. Rates are % of sum insured (decimal fraction). */
   var PAR_RATES = [
-    { code:'FLEXAS',        en:'Fire, Lightning, Explosion, Aircraft, Smoke',        id:'Kebakaran, Petir, Ledakan, Kejatuhan Pesawat, Asap',          rate:0.0014790,   flat:0 },
-    { code:'EQVET',         en:'Earthquake, Volcanic Eruption, Tsunami',             id:'Gempa Bumi, Letusan Gunung Berapi, Tsunami',                  rate:0.0014300,   flat:0 },
-    { code:'TSFWD (4.3A)',  en:'Typhoon, Storm, Flood, Water Damage',                id:'Angin Topan, Badai, Banjir, Kerusakan Akibat Air',            rate:0.0005000,   flat:0 },
-    { code:'RSMDCC (4.1B)', en:'Riot, Strike, Malicious Damage, Civil Commotion',    id:'Huru-hara, Pemogokan, Perbuatan Jahat, Kerusuhan Sipil',      rate:0.0000000100, flat:0 },
-    { code:'Others',        en:'Other extensions',                                   id:'Perluasan lainnya',                                           rate:0.0000000100, flat:0 }
+    { code:'FLEXAS',        en:'Fire, Lightning, Explosion, Aircraft, Smoke',        id:'Kebakaran, Petir, Ledakan, Kejatuhan Pesawat, Asap',          rate:0.000886,   flat:0 },
+    { code:'EQVET',         en:'Earthquake, Volcanic Eruption, Tsunami',             id:'Gempa Bumi, Letusan Gunung Berapi, Tsunami',                  rate:0.001430,   flat:0 },
+    { code:'TSFWD',         en:'Flood, Typhoon, Storm, Water Damage',                id:'Banjir, Angin Topan, Badai, Kerusakan akibat Air',            rate:0.000500,   flat:0 },
+    { code:'RSMDCC',        en:'Riot, Strike, Malicious Damage, Civil Commotion',    id:'Kerusuhan, Pemogokan, Perbuatan Jahat',                       rate:0.0000026,  flat:0 },
+    { code:'Other (PAR)',   en:'All Risks — other losses',                           id:'Semua Kerusakan Harta Benda — risiko lainnya',                rate:0.0000001,  flat:0 }
   ];
+  var PAR_POLICY_COST = 25000; // Biaya polis
 
   /* Employee Benefits — HealthPlus Business Essential (Cashless & Reimburse 100%).
      Annual premium per person, by age band and plan tier. Inpatient (RI) is the
@@ -67,12 +70,18 @@
   // Show only the step-2 fields relevant to the chosen cover.
   function applyCoverFields(cover){
     var isEB = cover==='eb';
+    var isProp = cover==='property';
     var needsSI = (cover==='property' || cover==='cargo');
     var set=function(id,on){ var el=document.getElementById(id); if(el) el.style.display = on?'block':'none'; };
     set('ebFields', isEB);
     set('fIndustry', !isEB);
-    set('fEmployees', !isEB);
+    set('fEmployees', !isEB && !isProp);   // property uses location instead of headcount
+    set('fLocation', isProp);
     set('sumInsuredField', needsSI);
+    var hint=document.getElementById('siHint');
+    if(hint) hint.textContent = isProp
+      ? ((document.documentElement.lang==='id')?'Total nilai bangunan + isi (IDR)':'Total building + contents value (IDR)')
+      : ((document.documentElement.lang==='id')?'Perkiraan nilai (IDR)':'Approx. value (IDR)');
   }
 
   document.querySelectorAll('[data-next]').forEach(function(b){
@@ -93,7 +102,12 @@
     if(email && email.indexOf('@')<0){ alert('Please enter a valid email / Masukkan email yang valid'); return; }
     var ind=parseFloat(document.getElementById('industry').value);
     var emp=parseInt(document.getElementById('employees').value,10);
-    var si=parseFloat(document.getElementById('sumInsured').value);
+    var si=parseFloat(String(document.getElementById('sumInsured').value).replace(/[^\d]/g,'')) || 0;
+    // Validate sum insured for covers that need it
+    if((state.cover==='property'||state.cover==='cargo') && si<=0){
+      alert(document.documentElement.lang==='id' ? 'Masukkan nilai pertanggungan (IDR)' : 'Please enter the sum insured (IDR)');
+      return;
+    }
     var lang = document.documentElement.lang === 'id' ? 'id' : 'en';
     var bd = document.getElementById('quoteBreakdown');
     var estimateText;
@@ -149,16 +163,25 @@
                 '<td style="padding:8px 6px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap">'+ratePct+'</td>'+
                 '<td style="padding:8px 6px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap">'+fmt(prem)+'</td></tr>';
       });
+      // policy cost line
+      total += PAR_POLICY_COST;
+      var costLbl = (lang==='id') ? 'Biaya polis' : 'Policy cost';
+      rows += '<tr><td style="padding:8px 6px;border-bottom:1px solid var(--line)">'+costLbl+'</td>'+
+              '<td style="padding:8px 6px;border-bottom:1px solid var(--line)"></td>'+
+              '<td style="padding:8px 6px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap">'+fmt(PAR_POLICY_COST)+'</td></tr>';
       var hdr = (lang==='id')
         ? ['Komponen (Peril)','Rate','Premi']
         : ['Component (Peril)','Rate','Premium'];
       var totalLbl = (lang==='id') ? 'Estimasi Premi (PAR)' : 'Estimated Premium (PAR)';
       var siLbl = (lang==='id') ? 'Nilai pertanggungan' : 'Sum insured';
+      var locLbl = (lang==='id') ? 'Lokasi' : 'Location';
+      var locVal = (document.getElementById('location') && document.getElementById('location').value.trim()) || '—';
       document.getElementById('quoteRange').textContent = fmt(total);
       document.getElementById('quoteNote').textContent = (lang==='id')
         ? 'Property All Risks — estimasi indikatif' : 'Property All Risks — indicative estimate';
       bd.innerHTML =
-        '<p style="font-size:.85rem;color:var(--muted);margin:14px 0 6px">'+siLbl+': <strong>'+fmt(si)+'</strong></p>'+
+        '<p style="font-size:.85rem;color:var(--muted);margin:14px 0 2px">'+locLbl+': <strong>'+locVal+'</strong></p>'+
+        '<p style="font-size:.85rem;color:var(--muted);margin:0 0 6px">'+siLbl+': <strong>'+fmt(si)+'</strong></p>'+
         '<table style="width:100%;border-collapse:collapse;font-size:.92rem;text-align:left">'+
         '<thead><tr>'+
         '<th style="padding:8px 6px;border-bottom:2px solid var(--line)">'+hdr[0]+'</th>'+
@@ -192,8 +215,11 @@
     var lead={
       cover: coverLabels[state.cover] || state.cover,
       industry: ebMeta ? ('Age '+ebMeta.age+', plan '+ebMeta.riPlan+(ebMeta.rjPlan!=='-'?(' + '+ebMeta.rjPlan):'')) : indSel.options[indSel.selectedIndex].text,
-      employees: ebMeta ? String(ebMeta.count) : empSel.options[empSel.selectedIndex].text,
-      sumInsured: ebMeta ? (ebMeta.perPerson+' /person') : (state.cover==='cargo'||state.cover==='property') ? document.getElementById('sumInsured').options[document.getElementById('sumInsured').selectedIndex].text : 'N/A',
+      employees: ebMeta ? String(ebMeta.count)
+                 : (state.cover==='property') ? ('Location: '+((document.getElementById('location')&&document.getElementById('location').value.trim())||'-'))
+                 : empSel.options[empSel.selectedIndex].text,
+      sumInsured: ebMeta ? (ebMeta.perPerson+' /person')
+                 : (state.cover==='cargo'||state.cover==='property') ? fmt(si) : 'N/A',
       company: document.getElementById('company').value.trim(),
       email: email,
       phone: document.getElementById('phone').value.trim(),

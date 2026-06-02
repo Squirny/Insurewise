@@ -56,6 +56,8 @@
       </select></div>
     <div class="field" id="fEmployees"><label data-en="Number of employees" data-id="Jumlah karyawan">Number of employees</label>
       <select id="employees"><option value="15">1–25</option><option value="60">26–100</option><option value="250">101–500</option><option value="750">500+</option></select></div>
+    <div class="field" id="fLocation" style="display:none"><label data-en="Location of the property" data-id="Lokasi properti">Location of the property</label>
+      <input id="location" type="text" data-en="City / area, e.g. Jakarta Selatan" data-id="Kota / area, mis. Jakarta Selatan" placeholder="City / area, e.g. Jakarta Selatan"></div>
 
     <!-- Employee Benefits specific (HealthPlus Business Essential) -->
     <div id="ebFields" style="display:none">
@@ -90,13 +92,9 @@
         </select></div>
     </div>
 
-    <div class="field" id="sumInsuredField"><label data-en="Approx. sum insured / asset value (IDR)" data-id="Perkiraan nilai pertanggungan / aset (IDR)">Approx. sum insured / asset value (IDR)</label>
-      <select id="sumInsured">
-        <option value="1000000000" data-en="Under Rp 1 billion" data-id="Di bawah Rp 1 miliar">Under Rp 1 billion</option>
-        <option value="5000000000" data-en="Rp 1–5 billion" data-id="Rp 1–5 miliar">Rp 1–5 billion</option>
-        <option value="15000000000" data-en="Rp 5–25 billion" data-id="Rp 5–25 miliar">Rp 5–25 billion</option>
-        <option value="50000000000" data-en="Over Rp 25 billion" data-id="Di atas Rp 25 miliar">Over Rp 25 billion</option>
-      </select></div>
+    <div class="field" id="sumInsuredField"><label data-en="Sum insured / asset value (IDR)" data-id="Nilai pertanggungan / aset (IDR)">Sum insured / asset value (IDR)</label>
+      <input id="sumInsured" type="text" inputmode="numeric" placeholder="e.g. 15.000.000.000">
+      <small id="siHint" style="color:var(--muted)"></small></div>
     <div class="qnav"><button type="button" class="btn btn-ghost" data-prev data-en="← Back" data-id="← Kembali">← Back</button><button type="button" class="btn btn-blue" data-next data-en="Next →" data-id="Lanjut →">Next →</button></div>
   </div>
 
