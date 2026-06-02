@@ -1,0 +1,139 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Compare Health Insurance for Employees | Indonesia | Insurewise</title>
+<meta name="description" content="Compare group & employee health insurance from Indonesia's leading insurers — Zurich, AXA, Allianz, AIA, Tokio Marine, Hanwha, Sunday, ACA, Lippo, Mandiri. See annual limits, hospital networks and age limits, then get an instant quote.">
+<meta name="keywords" content="bandingkan asuransi kesehatan, compare health insurance Indonesia, asuransi kesehatan karyawan, employee health insurance comparison, asuransi kesehatan terbaik">
+<link rel="canonical" href="https://www.insurewise.club/products/compare-health.html">
+<meta property="og:title" content="Compare Health Insurance for Employees | Insurewise"><meta property="og:type" content="article">
+<link rel="icon" href="../assets/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/styles.css">
+<style>
+  .cmp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .cmp-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px;display:flex;flex-direction:column;transition:.2s}
+  .cmp-card:hover{box-shadow:var(--shadow);transform:translateY(-4px);border-color:#cfe0f6}
+  .cmp-logo{height:46px;display:flex;align-items:center;font-weight:800;font-size:1.35rem;letter-spacing:-.02em;color:var(--blue);margin-bottom:14px}
+  .cmp-card h3{font-size:1.05rem;margin-bottom:14px}
+  .cmp-spec{display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid var(--line);font-size:.9rem}
+  .cmp-spec .k{color:var(--muted)}
+  .cmp-spec .v{font-weight:700;text-align:right}
+  .cmp-card .btn{margin-top:18px;width:100%;justify-content:center}
+  .filterbar{background:var(--blue-light);border-radius:16px;padding:22px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;align-items:end;margin-bottom:34px}
+  .filterbar .field{margin:0}
+  @media(max-width:920px){.cmp-grid{grid-template-columns:repeat(2,1fr)}.filterbar{grid-template-columns:1fr 1fr}}
+  @media(max-width:560px){.cmp-grid,.filterbar{grid-template-columns:1fr}}
+</style>
+</head><body>
+<header class="site"><div class="wrap nav">
+<a class="logo" href="../index.html"><img src="../assets/logo.svg" alt="Insurewise logo"></a>
+<ul class="nav-links">
+<li><a href="employee-benefits.html" data-en="Employee Benefits" data-id="Employee Benefit">Employee Benefits</a></li>
+<li><a href="property.html" data-en="Property" data-id="Properti">Property</a></li>
+<li><a href="liability.html" data-en="Liability" data-id="Liabilitas">Liability</a></li>
+<li><a href="cargo.html" data-en="Cargo" data-id="Kargo">Cargo</a></li>
+<li><a href="../about.html" data-en="About" data-id="Tentang">About</a></li></ul>
+<div class="nav-right"><div class="langtoggle"><button data-lang-btn="en" class="active">EN</button><button data-lang-btn="id">ID</button></div>
+<a href="../quote.html" class="btn btn-primary" data-en="Get a Quote" data-id="Minta Penawaran">Get a Quote</a>
+<button class="burger" aria-label="Menu">☰</button></div></div></header>
+
+<section class="pagehero"><div class="wrap">
+<div class="crumbs"><a href="../index.html" data-en="Home" data-id="Beranda">Home</a> / <a href="employee-benefits.html" data-en="Employee Benefits" data-id="Employee Benefit">Employee Benefits</a> / <span data-en="Compare health insurers" data-id="Bandingkan asuransi kesehatan">Compare health insurers</span></div>
+<span class="eyebrow" data-en="Compare" data-id="Bandingkan">Compare</span>
+<h1 data-en="Compare health insurance from Indonesia's leading insurers" data-id="Bandingkan asuransi kesehatan dari perusahaan terkemuka Indonesia">Compare health insurance from Indonesia's leading insurers</h1>
+<p class="lead" data-en="See annual limits, hospital networks and age limits side by side — then get one tailored quote. We compare across all our insurer partners so you don't have to." data-id="Lihat limit tahunan, jaringan rumah sakit, dan batas usia secara berdampingan — lalu dapatkan satu penawaran yang disesuaikan. Kami bandingkan seluruh mitra asuransi kami untuk Anda.">See annual limits, hospital networks and age limits side by side — then get one tailored quote. We compare across all our insurer partners so you don't have to.</p>
+</div></section>
+
+<section class="section"><div class="wrap">
+  <!-- quick profile -> feeds the quote -->
+  <div class="filterbar">
+    <div class="field"><label data-en="Cover for" data-id="Perlindungan untuk">Cover for</label>
+      <select id="fScope"><option data-en="My employees (group)" data-id="Karyawan saya (kelompok)">My employees (group)</option><option data-en="Individual / family" data-id="Individu / keluarga">Individual / family</option></select></div>
+    <div class="field"><label data-en="Number of people" data-id="Jumlah peserta">Number of people</label>
+      <input id="fPeople" type="number" min="1" value="10"></div>
+    <div class="field"><label data-en="Average age" data-id="Rata-rata usia">Average age</label>
+      <select id="fAge"><option>0–18</option><option selected>19–30</option><option>31–40</option><option>41–55</option><option>56–60</option></select></div>
+    <div class="field"><a href="../quote.html?cover=eb" class="btn btn-primary" style="width:100%;justify-content:center" data-en="Compare & quote →" data-id="Bandingkan & penawaran →">Compare & quote →</a></div>
+  </div>
+
+  <div class="cmp-grid" id="cmpGrid"></div>
+
+  <p class="disclaimer" style="color:var(--muted);margin-top:26px" data-en="Figures shown are general guidance and vary by plan, occupation and underwriting. They are not a binding offer — your Insurewise advisor confirms exact benefits and premiums. Insurer names and logos are shown to indicate the partners we place business with." data-id="Angka yang ditampilkan adalah panduan umum dan dapat berbeda tergantung plan, jenis usaha, dan underwriting. Bukan penawaran mengikat — penasihat Insurewise akan mengonfirmasi manfaat dan premi yang tepat. Nama dan logo asuransi ditampilkan untuk menunjukkan mitra tempat kami menempatkan bisnis.">Figures shown are general guidance and vary by plan, occupation and underwriting. They are not a binding offer — your Insurewise advisor confirms exact benefits and premiums. Insurer names and logos are shown to indicate the partners we place business with.</p>
+</div></section>
+
+<section class="section soft"><div class="wrap"><div class="ctaband">
+<h2 data-en="Not sure which insurer fits?" data-id="Belum yakin asuransi mana yang cocok?">Not sure which insurer fits?</h2>
+<p data-en="Tell us your team size and budget — we'll recommend the best match and handle the paperwork." data-id="Beri tahu kami ukuran tim dan anggaran Anda — kami akan merekomendasikan yang terbaik dan mengurus dokumennya.">Tell us your team size and budget — we'll recommend the best match and handle the paperwork.</p>
+<a href="../quote.html?cover=eb" class="btn btn-primary btn-lg" style="margin-top:14px" data-en="Get my quote" data-id="Dapatkan penawaran">Get my quote</a>
+</div></div></section>
+
+<footer class="site"><div class="wrap"><div class="fgrid">
+<div><img src="../assets/logo.svg" alt="Insurewise" style="height:36px;filter:brightness(0) invert(1)">
+<p style="margin-top:14px" data-en="Smart business insurance for Indonesian SMEs." data-id="Asuransi bisnis cerdas untuk UKM Indonesia.">Smart business insurance for Indonesian SMEs.</p></div>
+<div><h4 data-en="Products" data-id="Produk">Products</h4><ul>
+<li><a href="employee-benefits.html" data-en="Employee Benefits" data-id="Employee Benefit">Employee Benefits</a></li>
+<li><a href="property.html" data-en="Property" data-id="Properti">Property</a></li>
+<li><a href="liability.html" data-en="Liability" data-id="Liabilitas">Liability</a></li>
+<li><a href="cargo.html" data-en="Cargo & Marine" data-id="Kargo & Marine">Cargo & Marine</a></li></ul></div>
+<div><h4 data-en="Company" data-id="Perusahaan">Company</h4><ul>
+<li><a href="../about.html" data-en="About us" data-id="Tentang kami">About us</a></li>
+<li><a href="../quote.html" data-en="Get a quote" data-id="Minta penawaran">Get a quote</a></li></ul></div>
+<div><h4 data-en="Contact" data-id="Kontak">Contact</h4><ul>
+<li><a href="mailto:hello@insurewise.club">hello@insurewise.club</a></li><li>Jakarta, Indonesia</li></ul></div></div>
+<div class="fbottom"><span>© 2026 Insurewise.</span><span data-en="Made for Indonesian businesses" data-id="Dibuat untuk bisnis Indonesia">Made for Indonesian businesses</span></div>
+</div></footer>
+
+<script src="../js/main.js"></script>
+<script>
+/* ===========================================================================
+   INSURER COMPARISON DATA — edit this list freely.
+   Fill in real, verified figures per brand. Use "" for anything you don't
+   want to show yet (it will render as "—"). Order = display order.
+   Fields:
+     name       : brand name shown on the card
+     limit      : max annual limit (e.g. "Rp 25 M")
+     hospitals  : partner hospital network (e.g. "7,400+")
+     entryAge   : max entry age (e.g. "65")
+     renewAge   : max renewal age (e.g. "80")
+     note_en/note_id : one-line highlight (optional)
+   The two marked //verify are from public listings — confirm before relying.
+=========================================================================== */
+var INSURERS = [
+  { name:"Zurich",       limit:"", hospitals:"", entryAge:"", renewAge:"", note_en:"Strong corporate & SME health plans", note_id:"Plan kesehatan korporat & UKM yang kuat" },
+  { name:"AXA",          limit:"Rp 25 M", hospitals:"7,400+", entryAge:"65", renewAge:"80", note_en:"Wide hospital network, high limits", note_id:"Jaringan RS luas, limit tinggi" }, //verify
+  { name:"Allianz",      limit:"", hospitals:"", entryAge:"", renewAge:"", note_en:"Comprehensive group medical", note_id:"Medis kelompok menyeluruh" },
+  { name:"AIA",          limit:"", hospitals:"", entryAge:"", renewAge:"", note_en:"Health + life bundling options", note_id:"Opsi gabungan kesehatan + jiwa" },
+  { name:"Tokio Marine", limit:"", hospitals:"", entryAge:"", renewAge:"", note_en:"Reliable cashless service", note_id:"Layanan cashless andal" },
+  { name:"Hanwha",       limit:"", hospitals:"", entryAge:"", renewAge:"", note_en:"Competitive SME pricing", note_id:"Harga UKM kompetitif" },
+  { name:"Sunday",       limit:"", hospitals:"", entryAge:"", renewAge:"", note_en:"Digital-first, flexible plans", note_id:"Digital-first, plan fleksibel" },
+  { name:"ACA",          limit:"", hospitals:"", entryAge:"", renewAge:"", note_en:"Established local insurer", note_id:"Asuransi lokal terpercaya" },
+  { name:"Lippo (LGI)",  limit:"Rp 300 jt", hospitals:"1,200+", entryAge:"60", renewAge:"65", note_en:"HealthPlus group plans", note_id:"Plan kelompok HealthPlus" }, //verify
+  { name:"Mandiri",      limit:"", hospitals:"", entryAge:"", renewAge:"", note_en:"Bank-backed health cover", note_id:"Asuransi kesehatan dukungan bank" }
+];
+
+(function(){
+  var lang = (function(){ try{return localStorage.getItem('iw_lang')||'en';}catch(e){return 'en';} })();
+  var L = {
+    en:{ limit:"Annual limit", hospitals:"Partner hospitals", entry:"Max entry age", renew:"Max renewal age", quote:"Get this quote →", title:"Health insurance" },
+    id:{ limit:"Limit tahunan", hospitals:"RS rekanan", entry:"Usia masuk maks", renew:"Usia perpanjangan maks", quote:"Minta penawaran ini →", title:"Asuransi kesehatan" }
+  };
+  function dash(v){ return (v && String(v).trim()) ? v : "—"; }
+  var grid = document.getElementById('cmpGrid');
+  grid.innerHTML = INSURERS.map(function(b){
+    var note = (lang==='id'? b.note_id : b.note_en) || "";
+    return ''+
+    '<div class="cmp-card">'+
+      '<div class="cmp-logo">'+b.name+'</div>'+
+      '<h3 data-en="'+ (b.note_en||'Health insurance') +'" data-id="'+ (b.note_id||'Asuransi kesehatan') +'">'+ (note||'Health insurance') +'</h3>'+
+      '<div class="cmp-spec"><span class="k" data-en="Annual limit" data-id="Limit tahunan">'+L[lang].limit+'</span><span class="v">'+dash(b.limit)+'</span></div>'+
+      '<div class="cmp-spec"><span class="k" data-en="Partner hospitals" data-id="RS rekanan">'+L[lang].hospitals+'</span><span class="v">'+dash(b.hospitals)+'</span></div>'+
+      '<div class="cmp-spec"><span class="k" data-en="Max entry age" data-id="Usia masuk maks">'+L[lang].entry+'</span><span class="v">'+dash(b.entryAge)+'</span></div>'+
+      '<div class="cmp-spec"><span class="k" data-en="Max renewal age" data-id="Usia perpanjangan maks">'+L[lang].renew+'</span><span class="v">'+dash(b.renewAge)+'</span></div>'+
+      '<a class="btn btn-blue" href="../quote.html?cover=eb" data-en="Get this quote →" data-id="Minta penawaran ini →">'+L[lang].quote+'</a>'+
+    '</div>';
+  }).join('');
+  // re-apply bilingual labels to the freshly injected nodes
+  if (window.iwSetLang) window.iwSetLang(lang);
+})();
+</script>
+</body></html>
