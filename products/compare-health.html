@@ -18,7 +18,8 @@
   .cmp-spec{display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid var(--line);font-size:.9rem}
   .cmp-spec .k{color:var(--muted)}
   .cmp-spec .v{font-weight:700;text-align:right}
-  .cmp-card .btn{margin-top:18px;width:100%;justify-content:center}
+  .cmp-card .btn{margin-top:auto;padding-top:14px;width:100%;justify-content:center}
+  .cmp-card .cmp-spec:last-of-type{margin-bottom:18px}
   .filterbar{background:var(--blue-light);border-radius:16px;padding:22px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;align-items:end;margin-bottom:34px}
   .filterbar .field{margin:0}
   @media(max-width:920px){.cmp-grid{grid-template-columns:repeat(2,1fr)}.filterbar{grid-template-columns:1fr 1fr}}
@@ -119,18 +120,25 @@ var INSURERS = [
     en:{ limit:"Annual limit", hospitals:"Partner hospitals", entry:"Max entry age", renew:"Max renewal age", quote:"Get this quote →", title:"Health insurance" },
     id:{ limit:"Limit tahunan", hospitals:"RS rekanan", entry:"Usia masuk maks", renew:"Usia perpanjangan maks", quote:"Minta penawaran ini →", title:"Asuransi kesehatan" }
   };
-  function dash(v){ return (v && String(v).trim()) ? v : "—"; }
+  var has = function(v){ return v && String(v).trim(); };
+  var specRow = function(labelEn,labelId,val){
+    if(!has(val)) return '';
+    return '<div class="cmp-spec"><span class="k" data-en="'+labelEn+'" data-id="'+labelId+'">'+(lang==='id'?labelId:labelEn)+'</span><span class="v">'+val+'</span></div>';
+  };
   var grid = document.getElementById('cmpGrid');
   grid.innerHTML = INSURERS.map(function(b){
     var note = (lang==='id'? b.note_id : b.note_en) || "";
+    var rows =
+      specRow('Annual limit','Limit tahunan',b.limit)+
+      specRow('Partner hospitals','RS rekanan',b.hospitals)+
+      specRow('Max entry age','Usia masuk maks',b.entryAge)+
+      specRow('Max renewal age','Usia perpanjangan maks',b.renewAge);
+    if(!rows){ rows = '<div class="cmp-spec"><span class="k" data-en="Plan details" data-id="Detail plan">'+(lang==='id'?'Detail plan':'Plan details')+'</span><span class="v" data-en="On request" data-id="Sesuai permintaan">'+(lang==='id'?'Sesuai permintaan':'On request')+'</span></div>'; }
     return ''+
     '<div class="cmp-card">'+
       '<div class="cmp-logo">'+b.name+'</div>'+
       '<h3 data-en="'+ (b.note_en||'Health insurance') +'" data-id="'+ (b.note_id||'Asuransi kesehatan') +'">'+ (note||'Health insurance') +'</h3>'+
-      '<div class="cmp-spec"><span class="k" data-en="Annual limit" data-id="Limit tahunan">'+L[lang].limit+'</span><span class="v">'+dash(b.limit)+'</span></div>'+
-      '<div class="cmp-spec"><span class="k" data-en="Partner hospitals" data-id="RS rekanan">'+L[lang].hospitals+'</span><span class="v">'+dash(b.hospitals)+'</span></div>'+
-      '<div class="cmp-spec"><span class="k" data-en="Max entry age" data-id="Usia masuk maks">'+L[lang].entry+'</span><span class="v">'+dash(b.entryAge)+'</span></div>'+
-      '<div class="cmp-spec"><span class="k" data-en="Max renewal age" data-id="Usia perpanjangan maks">'+L[lang].renew+'</span><span class="v">'+dash(b.renewAge)+'</span></div>'+
+      rows+
       '<a class="btn btn-blue" href="../quote.html?cover=eb" data-en="Get this quote →" data-id="Minta penawaran ini →">'+L[lang].quote+'</a>'+
     '</div>';
   }).join('');
