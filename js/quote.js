@@ -6,7 +6,7 @@
                 Leave as "" to skip Google Sheet logging.
   =========================================================================== */
   var WA_NUMBER = window.IW_WA_NUMBER || "62XXXXXXXXXXX"; // set once in js/main.js
-  var SHEET_WEBHOOK_URL = "";               // <-- PASTE your Apps Script URL here
+  var SHEET_WEBHOOK_URL = "https://script.google.com/a/macros/insurewise.club/s/AKfycbzAQR1VmSSJ_oXZ6SOzIZdW70dpk-Zpy87k6PS4ojRqhTerIoTFTC1azGJ4vFeDQZoWvA/exec";
   /* ========================================================================= */
 
   var state={cover:null};
