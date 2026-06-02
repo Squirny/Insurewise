@@ -1,7 +1,7 @@
 // ===== CONFIG: set your WhatsApp number once here =====
 // International format, digits only, no "+" or spaces.
 // Example for +62 812-3456-7890 => "6281234567890"
-window.IW_WA_NUMBER = "62XXXXXXXXXXX";   // <-- REPLACE with your WhatsApp number
+window.IW_WA_NUMBER = "6282114294549";   // WhatsApp business number
 // ======================================================
 
 // Bilingual toggle + mobile nav
