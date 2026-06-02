@@ -1,97 +1,69 @@
-# Lead capture + WhatsApp setup
+# Lead capture + WhatsApp setup (simple version)
 
-This connects the quote form to a **Google Sheet** (every lead is logged) and a
-**WhatsApp** notification to your team (via Meta's Cloud API).
+No backend needed. Two independent pieces:
 
-How it flows:
-
-```
-Quote form  →  POST /api/lead  →  ① append row to Google Sheet
-(browser)      (Cloudflare         ② send WhatsApp message to your team
-                Pages Function)
-```
-
-You don't touch any code — you just create accounts and paste values into
-**Cloudflare → your Pages project → Settings → Environment variables**.
+1. **WhatsApp** — a `wa.me` click-to-chat link. When a visitor finishes the quote,
+   the "Continue on WhatsApp" button opens *their* WhatsApp with all their quote
+   details pre-filled, sending to your business number. There's also a floating
+   WhatsApp button on every page.
+2. **Google Sheet** — every completed quote is logged as a row (optional but
+   recommended, so you have leads even if they don't tap WhatsApp).
 
 ---
 
-## Part A — Google Sheet (lead log)
+## Part 1 — WhatsApp (required, 1 line)
 
-1. Create a new Google Sheet. In **row 1**, add these column headers exactly:
+Open **`js/main.js`** and edit the number near the top:
+
+```js
+window.IW_WA_NUMBER = "62XXXXXXXXXXX";   // <-- your number
+```
+
+Format: international, **digits only**, no `+` or spaces.
+Example: `+62 812-3456-7890` becomes `6281234567890`.
+
+That's it. This powers both the floating button and the quote-page button.
+(Until you replace the `X`s, the floating button stays hidden and the quote
+button still appears but points to a placeholder.)
+
+---
+
+## Part 2 — Google Sheet (optional, ~5 min)
+
+1. Create a new Google Sheet. In **row 1**, add these headers exactly:
    `submittedAt | cover | company | email | phone | industry | employees | sumInsured | estimate | page`
 2. **Extensions → Apps Script**. Delete the sample code, paste the contents of
-   `functions/google-apps-script.gs`, and click **Save**.
-3. **Deploy → New deployment**. Click the gear → choose **Web app**.
+   `functions/google-apps-script.gs`, click **Save**.
+3. **Deploy → New deployment** → gear icon → **Web app**.
    - **Execute as:** Me
    - **Who has access:** Anyone
-   - Click **Deploy**, authorise when prompted, and **copy the Web app URL**
+   - Click **Deploy**, authorise when asked, and **copy the Web app URL**
      (looks like `https://script.google.com/macros/s/AKfy.../exec`).
-4. In Cloudflare, set env var **`SHEET_WEBHOOK_URL`** = that URL.
+4. Open **`js/quote.js`** and paste that URL:
 
-That alone makes leads land in your sheet. WhatsApp is Part B.
+```js
+var SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfy.../exec";
+```
 
----
-
-## Part B — WhatsApp Cloud API (team notification)
-
-This is Meta's official API. The token must stay on the server (our Cloudflare
-Function holds it), never in the website.
-
-1. Go to **https://developers.facebook.com** → log in → **My Apps → Create App**
-   → type **Business**.
-2. In the app, add the **WhatsApp** product. Meta gives you a free **test
-   phone number** to start (good enough to test notifications to yourself).
-3. From the WhatsApp → **API Setup** page, copy:
-   - **Phone number ID** → Cloudflare env var **`WA_PHONE_ID`**
-   - **Temporary access token** → env var **`WA_TOKEN`** (for testing; see note below)
-4. Add the team number(s) that should RECEIVE alerts:
-   - On the API Setup page, under "To", add and verify each recipient number.
-   - Put them in env var **`WA_TO`** in international format, no `+`,
-     comma-separated. Example: `6281234567890,6289876543210`.
-5. Save all env vars in Cloudflare and **redeploy** the Pages project.
-
-### Going live (permanent)
-- The temporary token expires in 24h. For production, create a **System User**
-  in **business.facebook.com → Business settings → Users → System users**,
-  generate a **permanent token** with `whatsapp_business_messaging` permission,
-  and use that as `WA_TOKEN`.
-- Add and **verify your real business phone number** in WhatsApp Manager.
-- **Important rule:** WhatsApp only lets a business send *freeform* text to a
-  user within 24h of that user messaging you first. Since YOUR team is the
-  recipient and you control those numbers, the simple text alert works as long
-  as your team has messaged the business number once. If that's unreliable,
-  set env var **`WA_TEMPLATE`** to an **approved template name** and the
-  function will send a template instead (templates can be sent anytime).
-  Create templates in WhatsApp Manager → Message templates.
+Done. Completed quotes now append to your sheet automatically.
 
 ---
 
-## Cloudflare environment variables — summary
+## Test
 
-| Variable | Required | Example | What it is |
-|---|---|---|---|
-| `SHEET_WEBHOOK_URL` | for Sheet | `https://script.google.com/macros/s/AK.../exec` | Apps Script web-app URL |
-| `WA_TOKEN` | for WhatsApp | `EAAG...` | Meta Cloud API access token |
-| `WA_PHONE_ID` | for WhatsApp | `123456789012345` | Your WhatsApp phone number ID |
-| `WA_TO` | for WhatsApp | `6281234567890` | Who receives alerts (intl, no +) |
-| `WA_TEMPLATE` | optional | `new_lead_alert` | Approved template name (if used) |
+1. Open the live site → **Get a quote** → complete all steps.
+2. The result screen shows the estimate + a green **Continue on WhatsApp** button.
+   Tapping it opens WhatsApp with the lead details pre-filled.
+3. If you set up the sheet, a new row appears in it within a few seconds.
 
-Set them under **Cloudflare Pages → your project → Settings → Environment
-variables → Production** (and Preview if you want test deploys to work too).
-After changing env vars, trigger a redeploy.
+Nothing breaks for the visitor if the sheet isn't configured — they still get
+their estimate and the WhatsApp button.
 
 ---
 
-## Testing
-
-1. Deploy the site with at least `SHEET_WEBHOOK_URL` set.
-2. Open the live site → **Get a quote** → complete the form.
-3. Check your Google Sheet — a new row should appear.
-4. With the `WA_*` vars set, your team WhatsApp should get the alert too.
-5. To debug, the endpoint returns JSON like
-   `{"ok":true,"results":{"sheet":"ok","whatsapp":["ok:6281..."]}}`.
-   You can inspect it in the browser dev-tools Network tab on the `/api/lead` call.
-
-Nothing breaks for the visitor if these aren't configured yet — they still see
-their estimate; the lead send just silently no-ops until the env vars exist.
+## Notes
+- The `wa.me` link relies on the visitor tapping **send** in their WhatsApp.
+  The Google Sheet captures the lead regardless, so you don't lose anyone who
+  doesn't complete the chat.
+- Want auto-replies or server-sent WhatsApp messages later? That needs Meta's
+  Cloud API (a bigger setup) — ask and we can add it.

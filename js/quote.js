@@ -1,4 +1,14 @@
 (function(){
+  /* ====== CONFIG — edit these two lines ======================================
+     WA_NUMBER: your WhatsApp business number, international format, digits only,
+                no "+", no spaces. Example for +62 812-3456-7890 => "6281234567890".
+     SHEET_WEBHOOK_URL: the Google Apps Script web-app URL (see SETUP-leads-whatsapp.md).
+                Leave as "" to skip Google Sheet logging.
+  =========================================================================== */
+  var WA_NUMBER = window.IW_WA_NUMBER || "62XXXXXXXXXXX"; // set once in js/main.js
+  var SHEET_WEBHOOK_URL = "";               // <-- PASTE your Apps Script URL here
+  /* ========================================================================= */
+
   var state={cover:null};
   var steps=document.querySelectorAll('.qstep');
   var bars=document.querySelectorAll('.progress .p');
@@ -70,12 +80,29 @@
       page: location.href,
       submittedAt: new Date().toISOString()
     };
-    // Fire-and-forget; the user still sees their estimate even if this fails.
-    fetch('/api/lead',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify(lead)
-    }).catch(function(){ /* network/endpoint not configured yet */ });
+    // 1) Log lead to Google Sheet (fire-and-forget; no-cors avoids preflight issues).
+    if (SHEET_WEBHOOK_URL) {
+      fetch(SHEET_WEBHOOK_URL,{
+        method:'POST',
+        mode:'no-cors',
+        headers:{'Content-Type':'text/plain;charset=utf-8'},
+        body:JSON.stringify(lead)
+      }).catch(function(){ /* not configured / offline — visitor still sees estimate */ });
+    }
+
+    // 2) Build the WhatsApp click-to-chat link with the lead pre-filled.
+    var msg =
+      "Hi Insurewise, I'd like a quote.\n" +
+      "Cover: " + lead.cover + "\n" +
+      "Company: " + (lead.company || "-") + "\n" +
+      "Industry: " + lead.industry + "\n" +
+      "Employees: " + lead.employees + "\n" +
+      (lead.sumInsured!=='N/A' ? ("Sum insured: " + lead.sumInsured + "\n") : "") +
+      "Email: " + (lead.email || "-") + "\n" +
+      "Phone: " + (lead.phone || "-") + "\n" +
+      "Indicative estimate shown: " + lead.estimate;
+    var waBtn=document.getElementById('waBtn');
+    if (waBtn){ waBtn.href = "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(msg); }
   });
 
   // if cover pre-set, mark it
