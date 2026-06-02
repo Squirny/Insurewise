@@ -13,11 +13,11 @@
      Each peril is rated on the sum insured (rate) plus an optional flat amount.
      Derived from the supplied simulator (Rp2bn example => Rp6,818,040 total). */
   var PAR_RATES = [
-    { code:'FLEXAS',        en:'Fire, Lightning, Explosion, Aircraft, Smoke',        id:'Kebakaran, Petir, Ledakan, Kejatuhan Pesawat, Asap',          rate:0.001479, flat:0 },
-    { code:'EQVET',         en:'Earthquake, Volcanic Eruption, Tsunami',             id:'Gempa Bumi, Letusan Gunung Berapi, Tsunami',                  rate:0.001430, flat:0 },
-    { code:'TSFWD (4.3A)',  en:'Typhoon, Storm, Flood, Water Damage',                id:'Angin Topan, Badai, Banjir, Kerusakan Akibat Air',            rate:0.000500, flat:0 },
-    { code:'RSMDCC (4.1B)', en:'Riot, Strike, Malicious Damage, Civil Commotion',    id:'Huru-hara, Pemogokan, Perbuatan Jahat, Kerusuhan Sipil',      rate:0,        flat:20 },
-    { code:'Others',        en:'Other extensions',                                   id:'Perluasan lainnya',                                           rate:0,        flat:20 }
+    { code:'FLEXAS',        en:'Fire, Lightning, Explosion, Aircraft, Smoke',        id:'Kebakaran, Petir, Ledakan, Kejatuhan Pesawat, Asap',          rate:0.0014790,   flat:0 },
+    { code:'EQVET',         en:'Earthquake, Volcanic Eruption, Tsunami',             id:'Gempa Bumi, Letusan Gunung Berapi, Tsunami',                  rate:0.0014300,   flat:0 },
+    { code:'TSFWD (4.3A)',  en:'Typhoon, Storm, Flood, Water Damage',                id:'Angin Topan, Badai, Banjir, Kerusakan Akibat Air',            rate:0.0005000,   flat:0 },
+    { code:'RSMDCC (4.1B)', en:'Riot, Strike, Malicious Damage, Civil Commotion',    id:'Huru-hara, Pemogokan, Perbuatan Jahat, Kerusuhan Sipil',      rate:0.0000000100, flat:0 },
+    { code:'Others',        en:'Other extensions',                                   id:'Perluasan lainnya',                                           rate:0.0000000100, flat:0 }
   ];
 
   var state={cover:null};
@@ -73,7 +73,7 @@
       PAR_RATES.forEach(function(p){
         var prem = si * p.rate + p.flat;
         total += prem;
-        var ratePct = (p.rate * 100).toLocaleString('en-US',{maximumFractionDigits:4}) + '%';
+        var ratePct = (p.rate * 100).toLocaleString('en-US',{maximumFractionDigits:6}) + '%';
         rows += '<tr><td style="padding:8px 6px;border-bottom:1px solid var(--line)"><strong>'+p.code+'</strong><br><span style="color:var(--muted);font-size:.82rem">'+p[lang]+'</span></td>'+
                 '<td style="padding:8px 6px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap">'+ratePct+'</td>'+
                 '<td style="padding:8px 6px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap">'+fmt(prem)+'</td></tr>';
