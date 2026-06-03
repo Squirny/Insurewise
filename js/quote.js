@@ -92,6 +92,16 @@
   });
 
   function fmt(n){ return 'Rp ' + Math.round(n).toLocaleString('id-ID'); }
+
+  // Live thousands separators on the sum-insured input
+  (function(){
+    var si=document.getElementById('sumInsured');
+    if(!si) return;
+    si.addEventListener('input',function(){
+      var d=this.value.replace(/[^\d]/g,'');
+      this.value = d ? Number(d).toLocaleString('en-US') : '';
+    });
+  })();
   function line(label,val){
     return '<tr><td style="padding:8px 6px;border-bottom:1px solid var(--line)">'+label+'</td>'+
            '<td style="padding:8px 6px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap">'+val+'</td></tr>';

@@ -85,8 +85,11 @@ table.est td:last-child,table.est th:last-child{text-align:right;white-space:now
 
 <div id="padelCalc" style="background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;margin:18px 0;box-shadow:var(--shadow)">
   <div style="margin-bottom:14px">
-    <label style="display:block;font-weight:600;font-size:.9rem;margin-bottom:6px" data-en="Sum insured — building + equipment (IDR)" data-id="Nilai pertanggungan — bangunan + peralatan (IDR)">Sum insured — building + equipment (IDR)</label>
-    <input id="pcSI" type="text" inputmode="numeric" placeholder="e.g. 5.000.000.000" style="width:100%;padding:12px 14px;border:1.5px solid var(--line);border-radius:10px;font-size:1rem;font-family:inherit">
+    <label style="display:block;font-weight:600;font-size:.9rem;margin-bottom:6px" data-en="Sum insured — building + equipment" data-id="Nilai pertanggungan — bangunan + peralatan">Sum insured — building + equipment</label>
+    <div style="display:flex;align-items:stretch;border:1.5px solid var(--line);border-radius:10px;overflow:hidden">
+      <span style="display:flex;align-items:center;padding:0 13px;background:var(--bg-soft);color:var(--muted);font-weight:700;font-size:.95rem">IDR</span>
+      <input id="pcSI" type="text" inputmode="numeric" autocomplete="off" placeholder="e.g. 5,000,000,000" style="flex:1;border:0;outline:none;padding:12px 14px;font-size:1rem;font-family:inherit;background:#fff">
+    </div>
   </div>
   <div style="display:flex;flex-wrap:wrap;gap:14px 22px;margin:10px 0 4px">
     <label style="font-weight:600;font-size:.92rem;display:flex;align-items:center;gap:8px"><input id="pcEQ" type="checkbox" checked> <span data-en="Earthquake" data-id="Gempa">Earthquake</span></label>
@@ -138,6 +141,11 @@ table.est td:last-child,table.est th:last-child{text-align:right;white-space:now
   var fmt=function(n){return 'Rp '+Math.round(n).toLocaleString('id-ID');};
   var btn=document.getElementById('pcBtn');
   if(!btn) return;
+  var siIn=document.getElementById('pcSI');
+  if(siIn){ siIn.addEventListener('input',function(){
+    var d=this.value.replace(/[^\d]/g,'');
+    this.value = d ? Number(d).toLocaleString('en-US') : '';
+  }); }
   btn.addEventListener('click',function(){
     var lang=document.documentElement.lang==='id'?'id':'en';
     var si=parseFloat(String(document.getElementById('pcSI').value).replace(/[^\d]/g,''))||0;
