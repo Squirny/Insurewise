@@ -9,6 +9,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
+<style>
+.client-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.client-tile{display:flex;align-items:center;justify-content:center;height:96px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px;color:#9aa9bd;font-weight:700;font-size:.9rem;transition:.2s}
+.client-tile:hover{box-shadow:var(--shadow);border-color:#cfe0f6}
+.client-tile img{max-height:56px;max-width:100%;object-fit:contain;filter:grayscale(100%);opacity:.85;transition:.2s}
+.client-tile:hover img{filter:grayscale(0);opacity:1}
+@media(max-width:920px){.client-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:560px){.client-grid{grid-template-columns:repeat(2,1fr)}}
+</style>
 </head><body>
 <header class="site"><div class="wrap nav">
 <a class="logo" href="index.html"><img src="assets/logo.png" alt="Insurewise logo"></a>
@@ -53,6 +62,25 @@
 <h2 data-en="Backed by Indonesia's leading insurers" data-id="Didukung perusahaan asuransi terkemuka Indonesia">Backed by Indonesia's leading insurers</h2>
 <p class="lead" data-en="We place cover with trusted names across health, general and life insurance." data-id="Kami menempatkan perlindungan pada nama tepercaya di asuransi kesehatan, umum, dan jiwa.">We place cover with trusted names across health, general and life insurance.</p></div>
 <div class="logos"><span>Zurich</span><span>AXA</span><span>Allianz</span><span>AIA</span><span>Tokio Marine</span><span>Hanwha</span><span>Sunday</span><span>ACA</span><span>Lippo</span><span>Mandiri</span></div>
+</div></section>
+
+<!-- OUR CLIENTS -->
+<section class="section"><div class="wrap">
+<div class="center" style="margin-bottom:36px"><span class="eyebrow" data-en="Our clients" data-id="Klien kami">Our clients</span>
+<h2 data-en="Trusted by businesses across Indonesia" data-id="Dipercaya oleh bisnis di seluruh Indonesia">Trusted by businesses across Indonesia</h2>
+<p class="lead" data-en="From startups to established companies, businesses rely on us to protect their people, property and operations." data-id="Dari startup hingga perusahaan mapan, bisnis mempercayakan kami untuk melindungi karyawan, aset, dan operasional mereka.">From startups to established companies, businesses rely on us to protect their people, property and operations.</p></div>
+<!-- CLIENT LOGOS: replace each tile below with <img src="assets/clients/yourclient.png" alt="Client name"> once logo files are added to assets/clients/ -->
+<div class="client-grid">
+  <div class="client-tile" data-en="Client logo" data-id="Logo klien">Client logo</div>
+  <div class="client-tile" data-en="Client logo" data-id="Logo klien">Client logo</div>
+  <div class="client-tile" data-en="Client logo" data-id="Logo klien">Client logo</div>
+  <div class="client-tile" data-en="Client logo" data-id="Logo klien">Client logo</div>
+  <div class="client-tile" data-en="Client logo" data-id="Logo klien">Client logo</div>
+  <div class="client-tile" data-en="Client logo" data-id="Logo klien">Client logo</div>
+  <div class="client-tile" data-en="Client logo" data-id="Logo klien">Client logo</div>
+  <div class="client-tile" data-en="Client logo" data-id="Logo klien">Client logo</div>
+</div>
+<p class="center" style="color:var(--muted);font-size:.85rem;margin-top:22px" data-en="Client logos shown with permission." data-id="Logo klien ditampilkan dengan izin.">Client logos shown with permission.</p>
 </div></section>
 
 <section class="section"><div class="wrap stats">
