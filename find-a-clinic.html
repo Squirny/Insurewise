@@ -1,0 +1,131 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Find a Clinic or Hospital | Insurewise Network</title>
+<meta name="description" content="Search 10,000+ hospitals, clinics, pharmacies and labs in Indonesia's leading health insurance networks — Zurich Medicillin and Hanwha Life.">
+<link rel="canonical" href="https://www.insurewise.club/find-a-clinic.html">
+<link rel="icon" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<style>
+.finder-wrap{max-width:960px;margin:0 auto}
+.filters{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px;margin-bottom:24px}
+@media(max-width:700px){.filters{grid-template-columns:1fr 1fr}}
+@media(max-width:420px){.filters{grid-template-columns:1fr}}
+.filters input,.filters select{width:100%;padding:10px 14px;border:1.5px solid var(--line);border-radius:10px;font-size:.95rem;font-family:inherit;background:#fff;color:var(--ink);box-sizing:border-box;appearance:none;-webkit-appearance:none}
+.filters input:focus,.filters select:focus{outline:none;border-color:var(--blue)}
+.search-wrap{position:relative;grid-column:span 2}
+.search-wrap input{padding-left:38px}
+.search-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+.results-meta{font-size:.88rem;color:var(--muted);margin-bottom:14px}
+.results-meta strong{color:var(--ink)}
+.provider-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:640px){.provider-grid{grid-template-columns:1fr}}
+.pcard{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;display:flex;flex-direction:column;gap:6px}
+.pcard-top{display:flex;align-items:flex-start;gap:10px}
+.pcard-ico{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.ico-rs{background:#e8f0fe}.ico-klinik{background:#e6f4ea}.ico-lab{background:#fef3e2}.ico-apotek{background:#fce4ec}.ico-other{background:#f3e5f5}
+.pcard-name{font-weight:700;font-size:.95rem;color:var(--ink);line-height:1.3}
+.pcard-type{font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.pcard-addr{font-size:.82rem;color:var(--muted);line-height:1.4}
+.pcard-meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.badge{display:inline-block;border-radius:5px;padding:2px 8px;font-size:.74rem;font-weight:600}
+.badge-zurich{background:#e8f0fe;color:#1a56cc}
+.badge-hanwha{background:#fef3e2;color:#b45309}
+.badge-ri{background:#e6f4ea;color:#1a7a3a}
+.badge-rj{background:#f3e5f5;color:#6a1b9a}
+.badge-phone{background:#f5f5f5;color:#555;font-weight:400}
+.pcard-city{font-size:.8rem;color:var(--muted)}
+.load-more-wrap{text-align:center;margin:28px 0 8px}
+.btn-load{background:#fff;border:1.5px solid var(--blue);color:var(--blue);padding:10px 28px;border-radius:10px;font-weight:600;cursor:pointer;font-size:.95rem}
+.btn-load:hover{background:var(--blue);color:#fff}
+.empty{text-align:center;padding:48px 20px;color:var(--muted)}
+.loader{text-align:center;padding:60px 20px;color:var(--muted)}
+.spinner{display:inline-block;width:32px;height:32px;border:3px solid var(--line);border-top-color:var(--blue);border-radius:50%;animation:spin .7s linear infinite;margin-bottom:12px}
+@keyframes spin{to{transform:rotate(360deg)}}
+</style>
+</head><body>
+<header class="site"><div class="wrap nav">
+<a class="logo" href="index.html"><img src="assets/logo.png" alt="Insurewise logo"></a>
+<ul class="nav-links">
+<li><a href="products/employee-benefits.html" data-en="Employee Benefits" data-id="Employee Benefit">Employee Benefits</a></li>
+<li><a href="products/property.html" data-en="Property" data-id="Properti">Property</a></li>
+<li><a href="products/liability.html" data-en="Liability" data-id="Liabilitas">Liability</a></li>
+<li><a href="products/cargo.html" data-en="Cargo" data-id="Kargo">Cargo</a></li>
+<li><a href="products/cyber.html" data-en="Cyber" data-id="Siber">Cyber</a></li>
+<li><a href="insights.html" data-en="Insights" data-id="Wawasan">Insights</a></li>
+<li><a href="about.html" data-en="About" data-id="Tentang">About</a></li></ul>
+<div class="nav-right"><div class="langtoggle"><button data-lang-btn="en" class="active">EN</button><button data-lang-btn="id">ID</button></div>
+<a href="quote.html" class="btn btn-primary" data-en="Get a Quote" data-id="Minta Penawaran">Get a Quote</a>
+<button class="burger" aria-label="Menu">☰</button></div></div></header>
+
+<section class="pagehero"><div class="wrap">
+<span class="eyebrow" data-en="Employee Benefits" data-id="Employee Benefit">Employee Benefits</span>
+<h1 data-en="Find a clinic or hospital" data-id="Temukan klinik atau rumah sakit">Find a clinic or hospital</h1>
+<p data-en="Search 10,000+ hospitals, clinics, pharmacies and labs across Indonesia in the Zurich Medicillin and Hanwha Life health insurance networks." data-id="Cari 10.000+ rumah sakit, klinik, apotek, dan laboratorium di seluruh Indonesia dalam jaringan asuransi kesehatan Zurich Medicillin dan Hanwha Life.">Search 10,000+ hospitals, clinics, pharmacies and labs across Indonesia in the Zurich Medicillin and Hanwha Life health insurance networks.</p>
+</div></section>
+
+<section class="section"><div class="wrap finder-wrap">
+  <div class="filters">
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="q" placeholder="Search name or address…" autocomplete="off">
+    </div>
+    <select id="fInsurer"><option value="">All insurers</option><option value="Zurich">Zurich (Medicillin)</option><option value="Hanwha">Hanwha Life</option></select>
+    <select id="fType"><option value="">All types</option></select>
+    <select id="fProvince"><option value="">All provinces</option></select>
+    <select id="fCity"><option value="">All cities</option></select>
+  </div>
+  <div class="results-meta" id="meta"></div>
+  <div id="results"><div class="loader"><div class="spinner"></div><br>Loading provider network…</div></div>
+  <div class="load-more-wrap" id="loadMoreWrap" style="display:none">
+    <button class="btn-load" id="loadMore" data-en="Load more results" data-id="Tampilkan lebih banyak">Load more results</button>
+  </div>
+  <p style="font-size:.8rem;color:var(--muted);margin-top:24px" data-en="Network data: Zurich Medicillin (May 2026) and Hanwha Life via AdMedika (May 2026). Provider availability may change — confirm with your insurer before visiting." data-id="Data jaringan: Zurich Medicillin (Mei 2026) dan Hanwha Life via AdMedika (Mei 2026). Ketersediaan provider dapat berubah — konfirmasi dengan asuransi Anda sebelum berkunjung.">Network data: Zurich Medicillin (May 2026) and Hanwha Life via AdMedika (May 2026). Provider availability may change — confirm with your insurer before visiting.</p>
+</div></section>
+
+<section class="section soft"><div class="wrap"><div class="ctaband">
+<h2 data-en="Need health insurance that covers these networks?" data-id="Perlu asuransi kesehatan yang mencakup jaringan ini?">Need health insurance that covers these networks?</h2>
+<p data-en="Talk to an Insurewise advisor about group health plans with Zurich and Hanwha — cashless access at thousands of providers nationwide." data-id="Bicarakan dengan penasihat Insurewise tentang rencana kesehatan kumpulan dengan Zurich dan Hanwha — akses cashless di ribuan provider di seluruh Indonesia.">Talk to an Insurewise advisor about group health plans with Zurich and Hanwha — cashless access at thousands of providers nationwide.</p>
+<a href="quote.html?cover=eb" class="btn btn-primary btn-lg" style="margin-top:14px" data-en="Get a Quote" data-id="Minta Penawaran">Get a Quote</a>
+</div></div></section>
+
+<footer class="site"><div class="wrap"><div class="fgrid">
+<div><img src="assets/logo-white.png" alt="Insurewise" style="height:34px"><p style="margin-top:14px" data-en="Smart business insurance for Indonesian SMEs." data-id="Asuransi bisnis cerdas untuk UKM Indonesia.">Smart business insurance for Indonesian SMEs.</p></div>
+<div><h4 data-en="Products" data-id="Produk">Products</h4><ul>
+<li><a href="products/employee-benefits.html" data-en="Employee Benefits" data-id="Employee Benefit">Employee Benefits</a></li>
+<li><a href="products/property.html" data-en="Property" data-id="Properti">Property</a></li>
+<li><a href="products/liability.html" data-en="Liability" data-id="Liabilitas">Liability</a></li>
+<li><a href="products/cargo.html" data-en="Cargo & Marine" data-id="Kargo & Marine">Cargo & Marine</a></li>
+<li><a href="products/cyber.html" data-en="Cyber" data-id="Siber">Cyber</a></li></ul></div>
+<div><h4 data-en="Company" data-id="Perusahaan">Company</h4><ul>
+<li><a href="about.html" data-en="About us" data-id="Tentang kami">About us</a></li>
+<li><a href="insights.html" data-en="Insights" data-id="Wawasan">Insights</a></li>
+<li><a href="quote.html" data-en="Get a quote" data-id="Minta penawaran">Get a quote</a></li></ul></div>
+<div><h4 data-en="Contact" data-id="Kontak">Contact</h4><ul>
+<li><a href="mailto:sk@insurewise.club">sk@insurewise.club</a></li><li>Jakarta, Indonesia</li></ul></div></div>
+<div class="fbottom"><span>© 2026 Insurewise.</span><span data-en="Made for Indonesian businesses" data-id="Dibuat untuk bisnis Indonesia">Made for Indonesian businesses</span></div>
+</div></footer>
+<script src="js/main.js"></script>
+<script>
+(function(){
+  var all=[],filtered=[],page=0,PAGE=20;
+  var qEl=document.getElementById('q'),fIns=document.getElementById('fInsurer'),fType=document.getElementById('fType'),fProv=document.getElementById('fProvince'),fCity=document.getElementById('fCity'),meta=document.getElementById('meta'),results=document.getElementById('results'),loadMoreWrap=document.getElementById('loadMoreWrap'),loadMoreBtn=document.getElementById('loadMore');
+  var TYPE_LABELS={'RS':'🏥 Rumah Sakit','RSIA':'🏥 RS Ibu & Anak','RSU':'🏥 RS Umum','RSUD':'🏥 RS Daerah','RUMAH SAKIT':'🏥 Rumah Sakit','KLINIK PRATAMA':'🩺 Klinik Pratama','KLINIK UTAMA':'🩺 Klinik Utama','KLINIK':'🩺 Klinik','KLINIK & RB':'🩺 Klinik & Bersalin','DR':'👨‍⚕️ Dokter Umum','DRG':'🦷 Dokter Gigi','APOTEK':'💊 Apotek','LABORATORIUM':'🔬 Laboratorium','OPTIK':'👓 Optik','BIDAN':'🤱 Bidan','INHOUSE':'🏢 In-House','REIMBURSEMENT':'📄 Reimburse Only'};
+  function ico(t){t=(t||'').toUpperCase();if(t==='RS'||t==='RSIA'||t==='RSU'||t==='RSUD'||t==='RUMAH SAKIT')return{i:'🏥',c:'ico-rs'};if(t.indexOf('KLINIK')>=0||t==='DR'||t==='DRG'||t==='BIDAN')return{i:'🩺',c:'ico-klinik'};if(t==='LABORATORIUM')return{i:'🔬',c:'ico-lab'};if(t==='APOTEK')return{i:'💊',c:'ico-apotek'};return{i:'🏪',c:'ico-other'};}
+  function card(p){var ic=ico(p.type);var b='<span class="badge badge-'+(p.insurer==='Zurich'?'zurich':'hanwha')+'">'+p.insurer+'</span>';if(p.ri)b+='<span class="badge badge-ri">Inpatient</span>';if(p.rj)b+='<span class="badge badge-rj">Outpatient</span>';if(p.phone&&p.phone.length>2&&p.phone!=='0')b+='<span class="badge badge-phone">📞 '+p.phone+'</span>';return'<div class="pcard"><div class="pcard-top"><div class="pcard-ico '+ic.c+'">'+ic.i+'</div><div><div class="pcard-name">'+p.name+'</div><div class="pcard-type">'+(TYPE_LABELS[p.type]||p.type)+'</div></div></div><div class="pcard-addr">'+p.address+'</div><div class="pcard-city">📍 '+[p.city,p.province].filter(Boolean).join(', ')+'</div><div class="pcard-meta">'+b+'</div></div>';}
+  function render(){if(!filtered.length){results.innerHTML='<div class="empty">🔍<br><br>No providers found. Try adjusting filters.</div>';loadMoreWrap.style.display='none';meta.innerHTML='';return;}var slice=filtered.slice(0,(page+1)*PAGE);var h='<div class="provider-grid">';slice.forEach(function(p){h+=card(p);});h+='</div>';results.innerHTML=h;meta.innerHTML='Showing <strong>'+slice.length+'</strong> of <strong>'+filtered.length+'</strong> providers';loadMoreWrap.style.display=slice.length<filtered.length?'block':'none';}
+  function filter(){var q=qEl.value.toLowerCase().trim(),ins=fIns.value,type=fType.value,prov=fProv.value,city=fCity.value;filtered=all.filter(function(p){if(ins&&p.insurer!==ins)return false;if(type&&p.type!==type)return false;if(prov&&p.province!==prov)return false;if(city&&p.city!==city)return false;if(q){var h=(p.name+' '+p.address+' '+p.city).toLowerCase();if(h.indexOf(q)<0)return false;}return true;});page=0;render();}
+  function updateCities(prov){var cs=[...new Set(all.filter(p=>!prov||p.province===prov).map(p=>p.city).filter(Boolean))].sort();fCity.innerHTML='<option value="">All cities</option>'+cs.map(c=>'<option value="'+c+'">'+c+'</option>').join('');}
+  function init(){var types=[...new Set(all.map(p=>p.type).filter(Boolean))].sort();fType.innerHTML='<option value="">All types</option>'+types.map(t=>'<option value="'+t+'">'+(TYPE_LABELS[t]||t)+'</option>').join('');var provs=[...new Set(all.map(p=>p.province).filter(Boolean))].sort();fProv.innerHTML='<option value="">All provinces</option>'+provs.map(v=>'<option value="'+v+'">'+v+'</option>').join('');updateCities('');}
+  fetch('data/providers.json').then(function(r){return r.json();}).then(function(d){all=d;filtered=d;init();render();}).catch(function(){results.innerHTML='<div class="empty">⚠️<br><br>Could not load provider data. Please try again later.</div>';});
+  var deb=function(fn,ms){var t;return function(){clearTimeout(t);t=setTimeout(fn,ms);};};
+  qEl.addEventListener('input',deb(function(){page=0;filter();},220));
+  fIns.addEventListener('change',function(){page=0;filter();});
+  fType.addEventListener('change',function(){page=0;filter();});
+  fProv.addEventListener('change',function(){updateCities(fProv.value);fCity.value='';page=0;filter();});
+  fCity.addEventListener('change',function(){page=0;filter();});
+  loadMoreBtn.addEventListener('click',function(){page++;render();});
+})();
+</script>
+</body></html>
