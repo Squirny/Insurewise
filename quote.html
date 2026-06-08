@@ -41,6 +41,7 @@
       <div class="opt" data-val="property"><span class="e">🏢</span><span data-en="Property" data-id="Properti">Property</span></div>
       <div class="opt" data-val="liability"><span class="e">⚖️</span><span data-en="Liability" data-id="Liabilitas">Liability</span></div>
       <div class="opt" data-val="cargo"><span class="e">🚢</span><span data-en="Cargo & Marine" data-id="Kargo & Marine">Cargo & Marine</span></div>
+      <div class="opt" data-val="other"><span class="e">💼</span><span data-en="Other / Not sure" data-id="Lainnya / Belum tahu">Other / Not sure</span></div>
     </div>
     <div class="qnav"><span></span><button type="button" class="btn btn-blue" data-next disabled data-en="Next →" data-id="Lanjut →">Next →</button></div>
   </div>
@@ -95,6 +96,13 @@
         </select></div>
     </div>
 
+    <!-- Other cover specific fields -->
+    <div id="otherFields" style="display:none">
+      <div class="field"><label data-en="Type of insurance needed" data-id="Jenis asuransi yang dibutuhkan">Type of insurance needed</label>
+        <input id="otherType" type="text" placeholder="e.g. Motor fleet, D&O, marine hull, surety bond…"></div>
+      <div class="field"><label data-en="What do you want to insure?" data-id="Apa yang ingin Anda asuransikan?">What do you want to insure?</label>
+        <textarea id="otherItem" rows="3" style="width:100%;padding:10px 14px;border:1.5px solid var(--line);border-radius:10px;font-family:inherit;font-size:.95rem;resize:vertical;box-sizing:border-box" placeholder="Describe the asset, liability or risk you want covered…"></textarea></div>
+    </div>
     <div class="field" id="sumInsuredField"><label data-en="Sum insured / asset value" data-id="Nilai pertanggungan / aset">Sum insured / asset value</label>
       <div style="display:flex;align-items:stretch;border:1.5px solid var(--line);border-radius:10px;overflow:hidden">
         <span style="display:flex;align-items:center;padding:0 13px;background:var(--bg-soft);color:var(--muted);font-weight:700;font-size:.95rem">IDR</span>

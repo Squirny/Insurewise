@@ -71,16 +71,20 @@
   function applyCoverFields(cover){
     var isEB = cover==='eb';
     var isProp = cover==='property';
-    var needsSI = (cover==='property' || cover==='cargo');
+    var isOther = cover==='other';
+    var needsSI = (cover==='property' || cover==='cargo' || cover==='other');
     var set=function(id,on){ var el=document.getElementById(id); if(el) el.style.display = on?'block':'none'; };
     set('ebFields', isEB);
-    set('fIndustry', !isEB);
-    set('fEmployees', !isEB && !isProp);   // property uses location instead of headcount
+    set('otherFields', isOther);
+    set('fIndustry', !isEB && !isOther);
+    set('fEmployees', !isEB && !isProp && !isOther);
     set('fLocation', isProp);
     set('sumInsuredField', needsSI);
     var hint=document.getElementById('siHint');
     if(hint) hint.textContent = isProp
       ? ((document.documentElement.lang==='id')?'Total nilai bangunan + isi (IDR)':'Total building + contents value (IDR)')
+      : isOther
+      ? ((document.documentElement.lang==='id')?'Estimasi nilai aset / pertanggungan (IDR, opsional)':'Estimated asset / sum insured value (IDR, optional)')
       : ((document.documentElement.lang==='id')?'Perkiraan nilai (IDR)':'Approx. value (IDR)');
   }
 
@@ -204,6 +208,43 @@
       bd.style.display = 'block';
       estimateText = fmt(total);
     } else {
+      // ---- "Other" cover: no auto-calculation, collect data and send to advisor ----
+      if(state.cover==='other'){
+        var otherType = (document.getElementById('otherType')&&document.getElementById('otherType').value.trim())||'Not specified';
+        var otherItem = (document.getElementById('otherItem')&&document.getElementById('otherItem').value.trim())||'Not specified';
+        document.getElementById('quoteRange').textContent = '—';
+        document.getElementById('quoteNote').textContent = lang==='id'
+          ? 'Kami akan menghubungi Anda dengan penawaran yang disesuaikan'
+          : 'We'll be in touch with a tailored quote';
+        var bd = document.getElementById('quoteBreakdown');
+        bd.style.display='block';
+        bd.innerHTML='<p style="margin:0;font-size:.9rem"><strong>'+(lang==='id'?'Jenis asuransi':'Insurance type')+':</strong> '+otherType+'</p>'+
+          '<p style="margin:8px 0 0;font-size:.9rem"><strong>'+(lang==='id'?'Objek yang diasuransikan':'Item to insure')+':</strong> '+otherItem+'</p>'+
+          (si>0?'<p style="margin:8px 0 0;font-size:.9rem"><strong>'+(lang==='id'?'Nilai pertanggungan':'Sum insured')+':</strong> '+fmt(si)+'</p>':'');
+        // send lead
+        var lead={
+          cover:'Other Insurance',
+          company:(document.getElementById('company')&&document.getElementById('company').value.trim())||'-',
+          email:(document.getElementById('email')&&document.getElementById('email').value.trim())||'-',
+          phone:(document.getElementById('phone')&&document.getElementById('phone').value.trim())||'-',
+          details:'Type: '+otherType+' | Item: '+otherItem+(si>0?' | SI: '+fmt(si):''),
+          sumInsured: si>0?fmt(si):'N/A'
+        };
+        if(SHEET_WEBHOOK_URL){
+          fetch(SHEET_WEBHOOK_URL,{method:'POST',body:JSON.stringify({timestamp:new Date().toISOString(),cover:lead.cover,company:lead.company,email:lead.email,phone:lead.phone,details:lead.details,sumInsured:lead.sumInsured})}).catch(function(){});
+        }
+        var waNum = window.IW_WA_NUMBER||'6282114294549';
+        var waMsg = 'Halo Insurewise! Saya tertarik untuk asuransi:
+
+Jenis: '+otherType+'
+Objek: '+otherItem+(si>0?'
+Nilai: '+fmt(si):'')+'
+Perusahaan: '+lead.company+'
+No HP: '+lead.phone;
+        document.getElementById('waBtn').href='https://wa.me/'+waNum+'?text='+encodeURIComponent(waMsg);
+        show(4); return;
+      }
+
       // ---- Other covers: indicative range (placeholder rates until guidelines added) ----
       var base;
       switch(state.cover){
@@ -219,7 +260,7 @@
     show(4);
 
     // ---- Send the lead to the backend (Google Sheet + WhatsApp) ----
-    var coverLabels={eb:'Employee Benefits',property:'Property',liability:'Liability',cargo:'Cargo & Marine'};
+    var coverLabels={eb:'Employee Benefits',property:'Property',liability:'Liability',cargo:'Cargo & Marine',other:'Other Insurance'};
     var indSel=document.getElementById('industry');
     var empSel=document.getElementById('employees');
     var lead={
