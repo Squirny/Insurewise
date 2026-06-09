@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Find a Clinic or Hospital | Insurewise Network</title>
-<meta name="description" content="Search 21,000+ hospitals, clinics, pharmacies and labs in Indonesia's leading health insurance networks — Zurich Medicillin, Hanwha Life, and AIA.">
+<meta name="description" content="Search 21,000+ hospitals, clinics, pharmacies and labs in Indonesia's leading health insurance networks — Zurich Medicillin, Hanwha Life, Sunday, and AIA.">
 <link rel="canonical" href="https://www.insurewise.club/find-a-clinic.html">
 <link rel="icon" href="assets/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -63,7 +63,7 @@
 <section class="pagehero"><div class="wrap">
 <span class="eyebrow" data-en="Employee Benefits" data-id="Employee Benefit">Employee Benefits</span>
 <h1 data-en="Find a clinic or hospital" data-id="Temukan klinik atau rumah sakit">Find a clinic or hospital</h1>
-<p data-en="Search 21,000+ hospitals, clinics, pharmacies and labs across Indonesia in the Zurich Medicillin, Hanwha Life, and AIA health insurance networks." data-id="Cari 21.000+ rumah sakit, klinik, apotek, dan laboratorium di seluruh Indonesia dalam jaringan asuransi kesehatan Zurich Medicillin, Hanwha Life, dan AIA.">Search 21,000+ hospitals, clinics, pharmacies and labs across Indonesia in the Zurich Medicillin, Hanwha Life, and AIA health insurance networks.</p>
+<p data-en="Search 21,000+ hospitals, clinics, pharmacies and labs across Indonesia in the Zurich Medicillin, Hanwha Life, Sunday, and AIA health insurance networks." data-id="Cari 21.000+ rumah sakit, klinik, apotek, dan laboratorium di seluruh Indonesia dalam jaringan asuransi kesehatan Zurich Medicillin, Hanwha Life, Sunday, dan AIA.">Search 21,000+ hospitals, clinics, pharmacies and labs across Indonesia in the Zurich Medicillin, Hanwha Life, Sunday, and AIA health insurance networks.</p>
 </div></section>
 
 <section class="section"><div class="wrap finder-wrap">
@@ -72,7 +72,7 @@
       <span class="search-icon">🔍</span>
       <input type="text" id="q" placeholder="Search name or address…" autocomplete="off">
     </div>
-    <select id="fInsurer"><option value="">All insurers</option><option value="Zurich">Zurich (Medicillin)</option><option value="Hanwha">Hanwha Life</option><option value="AIA">AIA (AdMedika)</option></select>
+    <select id="fInsurer"><option value="">All insurers</option><option value="Zurich">Zurich (Medicillin)</option><option value="Hanwha">Hanwha Life</option><option value="Sunday">Sunday Insurance</option><option value="AIA">AIA (AdMedika)</option></select>
     <select id="fType"><option value="">All types</option></select>
     <select id="fProvince"><option value="">All provinces</option></select>
     <select id="fCity"><option value="">All cities</option></select>
@@ -82,7 +82,7 @@
   <div class="load-more-wrap" id="loadMoreWrap" style="display:none">
     <button class="btn-load" id="loadMore" data-en="Load more results" data-id="Tampilkan lebih banyak">Load more results</button>
   </div>
-  <p style="font-size:.8rem;color:var(--muted);margin-top:24px" data-en="Network data: Zurich Medicillin (May 2026), Hanwha Life via AdMedika (May 2026), and AIA via AdMedika (May 2026). Provider availability may change — confirm with your insurer before visiting." data-id="Data jaringan: Zurich Medicillin (Mei 2026), Hanwha Life via AdMedika (Mei 2026), dan AIA via AdMedika (Mei 2026). Ketersediaan provider dapat berubah — konfirmasi dengan asuransi Anda sebelum berkunjung.">Network data: Zurich Medicillin (May 2026), Hanwha Life via AdMedika (May 2026), and AIA via AdMedika (May 2026). Provider availability may change — confirm with your insurer before visiting.</p>
+  <p style="font-size:.8rem;color:var(--muted);margin-top:24px" data-en="Network data: Zurich Medicillin (May 2026), Hanwha Life via AdMedika (May 2026), Sunday Insurance (May 2026), and AIA via AdMedika (May 2026). Provider availability may change — confirm with your insurer before visiting." data-id="Data jaringan: Zurich Medicillin (Mei 2026), Hanwha Life via AdMedika (Mei 2026), Sunday Insurance (Mei 2026), dan AIA via AdMedika (Mei 2026). Ketersediaan provider dapat berubah — konfirmasi dengan asuransi Anda sebelum berkunjung.">Network data: Zurich Medicillin (May 2026), Hanwha Life via AdMedika (May 2026), Sunday Insurance (May 2026), and AIA via AdMedika (May 2026). Provider availability may change — confirm with your insurer before visiting.</p>
 </div></section>
 
 <section class="section soft"><div class="wrap"><div class="ctaband">
@@ -114,7 +114,7 @@
   var qEl=document.getElementById('q'),fIns=document.getElementById('fInsurer'),fType=document.getElementById('fType'),fProv=document.getElementById('fProvince'),fCity=document.getElementById('fCity'),meta=document.getElementById('meta'),results=document.getElementById('results'),loadMoreWrap=document.getElementById('loadMoreWrap'),loadMoreBtn=document.getElementById('loadMore');
   var TYPE_LABELS={'RS':'🏥 Rumah Sakit','RSIA':'🏥 RS Ibu & Anak','RSU':'🏥 RS Umum','RSUD':'🏥 RS Daerah','RUMAH SAKIT':'🏥 Rumah Sakit','KLINIK PRATAMA':'🩺 Klinik Pratama','KLINIK UTAMA':'🩺 Klinik Utama','KLINIK':'🩺 Klinik','KLINIK & RB':'🩺 Klinik & Bersalin','DR':'👨‍⚕️ Dokter Umum','DRG':'🦷 Dokter Gigi','APOTEK':'💊 Apotek','LABORATORIUM':'🔬 Laboratorium','OPTIK':'👓 Optik','BIDAN':'🤱 Bidan','INHOUSE':'🏢 In-House','REIMBURSEMENT':'📄 Reimburse Only','APOTEK':'💊 Apotek'};
   function ico(t){t=(t||'').toUpperCase();if(t==='RS'||t==='RSIA'||t==='RSU'||t==='RSUD'||t==='RUMAH SAKIT')return{i:'🏥',c:'ico-rs'};if(t.indexOf('KLINIK')>=0||t==='DR'||t==='DRG'||t==='BIDAN')return{i:'🩺',c:'ico-klinik'};if(t==='LABORATORIUM')return{i:'🔬',c:'ico-lab'};if(t==='APOTEK')return{i:'💊',c:'ico-apotek'};return{i:'🏪',c:'ico-other'};}
-  function card(p){var ic=ico(p.type);var ins_cls=p.insurer==='Zurich'?'zurich':p.insurer==='AIA'?'aia':'hanwha';var b='<span class="badge badge-'+ins_cls+'">'+p.insurer+'</span>';if(p.ri)b+='<span class="badge badge-ri">Inpatient</span>';if(p.rj)b+='<span class="badge badge-rj">Outpatient</span>';if(p.phone&&p.phone.length>2&&p.phone!=='0')b+='<span class="badge badge-phone">📞 '+p.phone+'</span>';return'<div class="pcard"><div class="pcard-top"><div class="pcard-ico '+ic.c+'">'+ic.i+'</div><div><div class="pcard-name">'+p.name+'</div><div class="pcard-type">'+(TYPE_LABELS[p.type]||p.type)+'</div></div></div><div class="pcard-addr">'+p.address+'</div><div class="pcard-city">📍 '+[p.city,p.province].filter(Boolean).join(', ')+'</div><div class="pcard-meta">'+b+'</div></div>';}
+  function card(p){var ic=ico(p.type);var ins_cls=p.insurer==='Zurich'?'zurich':p.insurer==='AIA'?'aia':p.insurer==='Sunday'?'hanwha':'zurich';var b='<span class="badge badge-'+ins_cls+'">'+p.insurer+'</span>';if(p.ri)b+='<span class="badge badge-ri">Inpatient</span>';if(p.rj)b+='<span class="badge badge-rj">Outpatient</span>';if(p.phone&&p.phone.length>2&&p.phone!=='0')b+='<span class="badge badge-phone">📞 '+p.phone+'</span>';return'<div class="pcard"><div class="pcard-top"><div class="pcard-ico '+ic.c+'">'+ic.i+'</div><div><div class="pcard-name">'+p.name+'</div><div class="pcard-type">'+(TYPE_LABELS[p.type]||p.type)+'</div></div></div><div class="pcard-addr">'+p.address+'</div><div class="pcard-city">📍 '+[p.city,p.province].filter(Boolean).join(', ')+'</div><div class="pcard-meta">'+b+'</div></div>';}
   function render(){if(!filtered.length){results.innerHTML='<div class="empty">🔍<br><br>No providers found. Try adjusting filters.</div>';loadMoreWrap.style.display='none';meta.innerHTML='';return;}var slice=filtered.slice(0,(page+1)*PAGE);var h='<div class="provider-grid">';slice.forEach(function(p){h+=card(p);});h+='</div>';results.innerHTML=h;meta.innerHTML='Showing <strong>'+slice.length+'</strong> of <strong>'+filtered.length+'</strong> providers';loadMoreWrap.style.display=slice.length<filtered.length?'block':'none';}
   function filter(){var q=qEl.value.toLowerCase().trim(),ins=fIns.value,type=fType.value,prov=fProv.value,city=fCity.value;filtered=all.filter(function(p){if(ins&&p.insurer!==ins)return false;if(type&&p.type!==type)return false;if(prov&&p.province!==prov)return false;if(city&&p.city!==city)return false;if(q){var h=(p.name+' '+p.address+' '+p.city).toLowerCase();if(h.indexOf(q)<0)return false;}return true;});page=0;render();}
   function updateCities(prov){var cs=[...new Set(all.filter(p=>!prov||p.province===prov).map(p=>p.city).filter(Boolean))].sort();fCity.innerHTML='<option value="">All cities</option>'+cs.map(c=>'<option value="'+c+'">'+c+'</option>').join('');}
