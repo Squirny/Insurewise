@@ -213,9 +213,10 @@
         var otherType = (document.getElementById('otherType')&&document.getElementById('otherType').value.trim())||'Not specified';
         var otherItem = (document.getElementById('otherItem')&&document.getElementById('otherItem').value.trim())||'Not specified';
         document.getElementById('quoteRange').textContent = '—';
+        // FIX 1: was 'We'll...' — apostrophe inside single quotes broke the parser
         document.getElementById('quoteNote').textContent = lang==='id'
           ? 'Kami akan menghubungi Anda dengan penawaran yang disesuaikan'
-          : 'We'll be in touch with a tailored quote';
+          : "We'll be in touch with a tailored quote";
         var bd = document.getElementById('quoteBreakdown');
         bd.style.display='block';
         bd.innerHTML='<p style="margin:0;font-size:.9rem"><strong>'+(lang==='id'?'Jenis asuransi':'Insurance type')+':</strong> '+otherType+'</p>'+
@@ -234,13 +235,13 @@
           fetch(SHEET_WEBHOOK_URL,{method:'POST',body:JSON.stringify({timestamp:new Date().toISOString(),cover:lead.cover,company:lead.company,email:lead.email,phone:lead.phone,details:lead.details,sumInsured:lead.sumInsured})}).catch(function(){});
         }
         var waNum = window.IW_WA_NUMBER||'6282114294549';
-        var waMsg = 'Halo Insurewise! Saya tertarik untuk asuransi:
-
-Jenis: '+otherType+'
-Objek: '+otherItem+(si>0?'
-Nilai: '+fmt(si):'')+'
-Perusahaan: '+lead.company+'
-No HP: '+lead.phone;
+        // FIX 2: was literal newlines inside single-quoted string — use \n instead
+        var waMsg = 'Halo Insurewise! Saya tertarik untuk asuransi:\n\n' +
+          'Jenis: '+otherType+'\n' +
+          'Objek: '+otherItem+
+          (si>0?'\nNilai: '+fmt(si):'')+'\n' +
+          'Perusahaan: '+lead.company+'\n' +
+          'No HP: '+lead.phone;
         document.getElementById('waBtn').href='https://wa.me/'+waNum+'?text='+encodeURIComponent(waMsg);
         show(4); return;
       }
