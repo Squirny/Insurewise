@@ -1,0 +1,35 @@
+# 301 legacy .html paths -> canonical clean URLs
+
+/about.html  /about  301
+/find-a-clinic.html  /find-a-clinic  301
+/index.html  /  301
+/insights.html  /insights  301
+/insights/aesthetic-clinic-insurance-indonesia.html  /insights/aesthetic-clinic-insurance-indonesia  301
+/insights/bali-villa-insurance-2026.html  /insights/bali-villa-insurance-2026  301
+/insights/best-hospitals-jakarta-employee-benefits.html  /insights/best-hospitals-jakarta-employee-benefits  301
+/insights/bpjs-vs-private-health-insurance-indonesia.html  /insights/bpjs-vs-private-health-insurance-indonesia  301
+/insights/business-interruption-insurance-java-blackout-2026.html  /insights/business-interruption-insurance-java-blackout-2026  301
+/insights/car-insurance-electric-vehicle-indonesia-2026.html  /insights/car-insurance-electric-vehicle-indonesia-2026  301
+/insights/cargo-insurance-what-why-hormuz.html  /insights/cargo-insurance-what-why-hormuz  301
+/insights/cyber-business-interruption-insurance-indonesia.html  /insights/cyber-business-interruption-insurance-indonesia  301
+/insights/cyber-insurance-indonesia.html  /insights/cyber-insurance-indonesia  301
+/insights/directors-officers-insurance-indonesia.html  /insights/directors-officers-insurance-indonesia  301
+/insights/employee-benefit-what-and-why.html  /insights/employee-benefit-what-and-why  301
+/insights/employee-health-insurance-cost-indonesia.html  /insights/employee-health-insurance-cost-indonesia  301
+/insights/employee-theft-warehouse-fire-property-insurance-indonesia-2026.html  /insights/employee-theft-warehouse-fire-property-insurance-indonesia-2026  301
+/insights/hr-employee-benefit-risks-indonesia-sme-2026.html  /insights/hr-employee-benefit-risks-indonesia-sme-2026  301
+/insights/kost-boarding-house-insurance-indonesia.html  /insights/kost-boarding-house-insurance-indonesia  301
+/insights/liability-insurance-what-and-why.html  /insights/liability-insurance-what-and-why  301
+/insights/padel-court-insurance-indonesia.html  /insights/padel-court-insurance-indonesia  301
+/insights/property-insurance-what-why-and-iran-war.html  /insights/property-insurance-what-why-and-iran-war  301
+/insights/social-engineering-fraud-cyber-insurance-indonesia.html  /insights/social-engineering-fraud-cyber-insurance-indonesia  301
+/insights/theft-burglary-insurance-indonesia-2026.html  /insights/theft-burglary-insurance-indonesia-2026  301
+/insights/truck-pileup-third-party-liability-insurance-indonesia-2026.html  /insights/truck-pileup-third-party-liability-insurance-indonesia-2026  301
+/insights/uu-pdp-biometric-sim-phishing-cyber-insurance-indonesia-2026.html  /insights/uu-pdp-biometric-sim-phishing-cyber-insurance-indonesia-2026  301
+/products/cargo.html  /products/cargo  301
+/products/compare-health.html  /products/compare-health  301
+/products/cyber.html  /products/cyber  301
+/products/employee-benefits.html  /products/employee-benefits  301
+/products/liability.html  /products/liability  301
+/products/property.html  /products/property  301
+/quote.html  /quote  301
