@@ -1,29 +1,133 @@
 <!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Compare Health Insurance for Employees | Indonesia | Insurewise</title>
-<meta name="description" content="Compare group & employee health insurance from Indonesia's leading insurers — Zurich, AXA, Allianz, AIA, Tokio Marine, Hanwha, Sunday, ACA, Lippo, Mandiri. See annual limits, hospital networks and age limits, then get an instant quote.">
-<meta name="keywords" content="bandingkan asuransi kesehatan, compare health insurance Indonesia, asuransi kesehatan karyawan, employee health insurance comparison, asuransi kesehatan terbaik">
+<title>Compare Employee Health Insurance Plans & Prices | Indonesia | Insurewise</title>
+<meta name="description" content="Compare ready-made group health insurance plans for your employees in Indonesia. Enter team size and average age to see instant annual premiums, room limits, outpatient cover and hospital networks, side by side.">
+<meta name="keywords" content="bandingkan asuransi kesehatan karyawan, harga asuransi kesehatan kelompok, compare employee health insurance Indonesia, group health insurance price, asuransi kesehatan perusahaan">
 <link rel="canonical" href="https://www.insurewise.club/products/compare-health">
-<meta property="og:title" content="Compare Health Insurance for Employees | Insurewise"><meta property="og:type" content="article">
+<meta property="og:title" content="Compare Employee Health Insurance Plans & Prices | Insurewise"><meta property="og:type" content="website">
+<meta property="og:description" content="Instant annual premiums for ready-made group health plans. Compare room limits, outpatient cover and hospital networks side by side.">
 <link rel="icon" href="../assets/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/styles.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How are the prices on this comparison calculated?","acceptedAnswer":{"@type":"Answer","text":"Each priced plan uses the insurer's own per-person annual rate for the age band that matches your workforce's average age, multiplied by the number of employees. The final premium is calculated by the insurer on your actual member list, so it can differ."}},
+{"@type":"Question","name":"What does the room limit per night mean?","acceptedAnswer":{"@type":"Answer","text":"It is the hospital room and board amount the plan pays per night of inpatient stay. Surgeon, specialist and ICU fees are usually scaled to the room class, so choosing the right room limit matters more than most people expect."}},
+{"@type":"Question","name":"Why do some insurers show 'price on request'?","acceptedAnswer":{"@type":"Answer","text":"We only show instant prices where we hold the insurer's real rate card. For other partners, our advisor requests a quote on your behalf and compares it with the plans listed here."}}
+]}
+</script>
 <style>
-  .cmp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-  .cmp-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px;display:flex;flex-direction:column;transition:.2s}
-  .cmp-card:hover{box-shadow:var(--shadow);transform:translateY(-4px);border-color:#cfe0f6}
-  .cmp-logo{height:46px;display:flex;align-items:center;font-weight:800;font-size:1.35rem;letter-spacing:-.02em;color:var(--blue);margin-bottom:14px}
-  .cmp-card h3{font-size:1.05rem;margin-bottom:14px}
-  .cmp-spec{display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid var(--line);font-size:.9rem}
-  .cmp-spec .k{color:var(--muted)}
-  .cmp-spec .v{font-weight:700;text-align:right}
-  .cmp-card .btn{margin-top:auto;padding-top:14px;width:100%;justify-content:center}
-  .cmp-card .cmp-spec:last-of-type{margin-bottom:18px}
-  .filterbar{background:var(--blue-light);border-radius:16px;padding:22px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;align-items:end;margin-bottom:34px}
-  .filterbar .field{margin:0}
-  @media(max-width:920px){.cmp-grid{grid-template-columns:repeat(2,1fr)}.filterbar{grid-template-columns:1fr 1fr}}
-  @media(max-width:560px){.cmp-grid,.filterbar{grid-template-columns:1fr}}
+  .cmp-hero{padding:46px 0 30px}
+  .cmp-hero h1{font-size:clamp(1.8rem,3.6vw,2.6rem);max-width:820px}
+  .crumbs{font-size:.85rem;color:var(--muted);margin-bottom:14px}
+
+  /* profile bar */
+  .profile{background:var(--blue);border-radius:18px;padding:22px;display:grid;grid-template-columns:1fr 1fr 1.2fr 1.2fr auto;gap:14px;align-items:end;box-shadow:var(--shadow)}
+  .profile .field{margin:0}
+  .profile label{color:#d7e6fb}
+  .profile .btn{height:50px;white-space:nowrap}
+
+  /* layout */
+  .cmp-layout{display:grid;grid-template-columns:260px 1fr;gap:28px;margin-top:30px;align-items:start}
+  .sidebar{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:20px;position:sticky;top:90px}
+  .sidebar h4{font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+  .sidebar .grp{padding:14px 0;border-bottom:1px solid var(--line)}
+  .sidebar .grp:first-child{padding-top:0}
+  .sidebar .grp:last-child{border-bottom:0;padding-bottom:0}
+  .chk{display:flex;align-items:center;gap:9px;font-size:.93rem;padding:5px 0;cursor:pointer;color:var(--ink)}
+  .chk input{width:17px;height:17px;accent-color:var(--blue)}
+  .chk.locked{color:var(--muted);cursor:default}
+  .sidebar small{display:block;color:var(--muted);font-size:.78rem;line-height:1.4;margin-top:6px}
+  .range{width:100%;accent-color:var(--blue)}
+  .rangeval{font-weight:700;font-size:.92rem}
+
+  .reshead{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:16px}
+  .reshead .count{font-weight:700}
+  .reshead .count span{color:var(--muted);font-weight:600}
+  .reshead select{padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;font-family:inherit;font-size:.92rem;background:#fff}
+  .pricenote{font-size:.82rem;color:var(--muted);margin:-6px 0 16px}
+
+  /* plan cards */
+  .plan{background:#fff;border:1px solid var(--line);border-radius:var(--radius);display:grid;grid-template-columns:1.25fr 1.3fr 1fr;margin-bottom:16px;overflow:hidden;transition:.18s}
+  .plan:hover{box-shadow:var(--shadow);border-color:#cfe0f6}
+  .plan.sel{border-color:var(--blue);box-shadow:0 0 0 2px var(--blue)}
+  .plan > div{padding:20px}
+  .p-id .ins{font-weight:800;font-size:1.3rem;color:var(--blue);letter-spacing:-.02em}
+  .p-id .prod{font-size:.85rem;color:var(--muted);margin-bottom:6px}
+  .p-id .name{font-weight:700;font-size:1rem;margin-bottom:10px}
+  .tags{display:flex;flex-wrap:wrap;gap:6px}
+  .tag{font-size:.72rem;font-weight:700;padding:4px 9px;border-radius:999px;background:var(--blue-light);color:var(--blue)}
+  .tag.ok{background:#e6f6ec;color:#1b7a3d}
+  .tag.low{background:#fff4cc;color:#7a5a00}
+  .p-spec{border-left:1px solid var(--line);border-right:1px solid var(--line)}
+  .spec{display:flex;justify-content:space-between;gap:10px;font-size:.88rem;padding:6px 0;border-bottom:1px dashed var(--line)}
+  .spec:last-child{border-bottom:0}
+  .spec .k{color:var(--muted)}
+  .spec .v{font-weight:700;text-align:right}
+  .spec .v a{font-weight:600;font-size:.82rem}
+  .no{color:#a3b0c2;font-weight:600}
+  .p-price{background:var(--bg-soft);display:flex;flex-direction:column}
+  .p-price .lbl{font-size:.75rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+  .p-price .big{font-size:1.45rem;font-weight:800;color:var(--ink);letter-spacing:-.02em;line-height:1.2;margin:2px 0 4px}
+  .p-price .pp{font-size:.82rem;color:var(--muted);margin-bottom:12px}
+  .p-price .btn{width:100%;justify-content:center;padding:11px 14px;font-size:.92rem;margin-bottom:8px}
+  .p-price .cmpchk{font-size:.85rem;justify-content:center;margin-top:auto}
+
+  .empty{background:#fff;border:1px dashed var(--line);border-radius:var(--radius);padding:30px;text-align:center;color:var(--muted)}
+
+  /* on-request partners */
+  .req-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .req{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px;display:flex;flex-direction:column;gap:6px}
+  .req .ins{font-weight:800;font-size:1.1rem;color:var(--blue)}
+  .req p{font-size:.86rem;margin:0}
+  .req .meta{font-size:.78rem;color:var(--muted)}
+  .req .warn{font-size:.78rem;color:#9a4a00;font-weight:600}
+  .req a.btn{margin-top:auto;padding:9px 14px;font-size:.86rem;justify-content:center}
+
+  /* compare tray + modal */
+  .tray{position:fixed;left:0;right:0;bottom:0;z-index:55;background:#fff;border-top:1px solid var(--line);box-shadow:0 -8px 24px rgba(21,89,184,.12);transform:translateY(110%);transition:.25s}
+  .tray.on{transform:none}
+  .tray .wrap{display:flex;align-items:center;gap:14px;padding-top:12px;padding-bottom:12px;padding-right:96px}
+  .tray .chips{display:flex;gap:8px;flex-wrap:wrap;flex:1}
+  .chip{background:var(--blue-light);color:var(--blue);font-weight:700;font-size:.8rem;padding:6px 10px;border-radius:999px;display:flex;align-items:center;gap:6px}
+  .chip button{border:0;background:none;color:var(--blue);cursor:pointer;font-size:1rem;line-height:1;padding:0}
+  .tray .btn{padding:11px 20px;font-size:.92rem}
+  .modal{position:fixed;inset:0;z-index:70;background:rgba(14,30,54,.55);display:none;align-items:flex-start;justify-content:center;padding:40px 16px;overflow:auto}
+  .modal.on{display:flex}
+  .modal .box{background:#fff;border-radius:18px;max-width:980px;width:100%;padding:24px;position:relative}
+  .modal .x{position:absolute;right:14px;top:10px;border:0;background:none;font-size:1.7rem;cursor:pointer;color:var(--muted)}
+  .ctable-wrap{overflow-x:auto}
+  .ctable{width:100%;border-collapse:collapse;font-size:.9rem;min-width:560px}
+  .ctable th,.ctable td{padding:11px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+  .ctable th{color:var(--muted);font-weight:600;width:24%}
+  .ctable thead td{font-weight:800;color:var(--blue);font-size:1rem}
+  .ctable .best{color:#1b7a3d;font-weight:800}
+  .ctable .btn{padding:9px 14px;font-size:.85rem}
+
+  .assume{background:var(--bg-soft);border-radius:var(--radius);padding:18px 20px;font-size:.86rem;color:var(--muted);margin-top:8px}
+  .assume ul{margin:6px 0 0;padding-left:18px}
+  .filters-toggle{display:none}
+
+  @media(max-width:1000px){
+    .profile{grid-template-columns:1fr 1fr}
+    .profile .btn{grid-column:1/-1}
+    .cmp-layout{grid-template-columns:1fr}
+    .sidebar{position:static;display:none}
+    .sidebar.open{display:block}
+    .filters-toggle{display:inline-flex}
+    .plan{grid-template-columns:1fr 1fr}
+    .p-id{grid-column:1/-1;border-bottom:1px solid var(--line)}
+    .p-spec{border-left:0}
+    .req-grid{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:600px){
+    .profile{grid-template-columns:1fr}
+    .plan{grid-template-columns:1fr}
+    .p-spec{border-right:0;border-bottom:1px solid var(--line)}
+    .req-grid{grid-template-columns:1fr}
+    .tray .wrap{flex-wrap:wrap;padding-right:88px}
+  }
 </style>
 </head><body>
 <header class="site"><div class="wrap nav">
@@ -41,35 +145,104 @@
 <a href="/quote" class="btn btn-primary" data-en="Get a Quote" data-id="Minta Penawaran">Get a Quote</a>
 <button class="burger" aria-label="Menu">☰</button></div></div></header>
 
-<section class="pagehero"><div class="wrap">
-<div class="crumbs"><a href="/" data-en="Home" data-id="Beranda">Home</a> / <a href="/products/employee-benefits" data-en="Employee Benefits" data-id="Employee Benefit">Employee Benefits</a> / <span data-en="Compare health insurers" data-id="Bandingkan asuransi kesehatan">Compare health insurers</span></div>
-<span class="eyebrow" data-en="Compare" data-id="Bandingkan">Compare</span>
-<h1 data-en="Compare health insurance from Indonesia's leading insurers" data-id="Bandingkan asuransi kesehatan dari perusahaan terkemuka Indonesia">Compare health insurance from Indonesia's leading insurers</h1>
-<p class="lead" data-en="See annual limits, hospital networks and age limits side by side — then get one tailored quote. We compare across all our insurer partners so you don't have to." data-id="Lihat limit tahunan, jaringan rumah sakit, dan batas usia secara berdampingan — lalu dapatkan satu penawaran yang disesuaikan. Kami bandingkan seluruh mitra asuransi kami untuk Anda.">See annual limits, hospital networks and age limits side by side — then get one tailored quote. We compare across all our insurer partners so you don't have to.</p>
+<section class="cmp-hero"><div class="wrap">
+<div class="crumbs"><a href="/" data-en="Home" data-id="Beranda">Home</a> / <a href="/products/employee-benefits" data-en="Employee Benefits" data-id="Employee Benefit">Employee Benefits</a> / <span data-en="Compare plans" data-id="Bandingkan plan">Compare plans</span></div>
+<span class="eyebrow" data-en="Group health · Instant prices" data-id="Kesehatan kelompok · Harga instan">Group health · Instant prices</span>
+<h1 data-en="Compare employee health insurance plans and prices" data-id="Bandingkan plan dan harga asuransi kesehatan karyawan">Compare employee health insurance plans and prices</h1>
+<p class="lead" data-en="Enter your team size and average age. We'll list ready-made plans with their annual premium, room limit, outpatient cover and hospital network, cheapest first." data-id="Masukkan jumlah karyawan dan rata-rata usia. Kami tampilkan plan siap pakai lengkap dengan premi tahunan, limit kamar, rawat jalan, dan jaringan rumah sakit, mulai dari yang termurah.">Enter your team size and average age. We'll list ready-made plans with their annual premium, room limit, outpatient cover and hospital network, cheapest first.</p>
+
+<form class="profile" id="profile" onsubmit="return false">
+  <div class="field"><label for="pEmp" data-en="Number of employees" data-id="Jumlah karyawan">Number of employees</label>
+    <input id="pEmp" type="number" min="1" max="5000" inputmode="numeric" value="10"></div>
+  <div class="field"><label for="pAge" data-en="Average age" data-id="Rata-rata usia">Average age</label>
+    <input id="pAge" type="number" min="18" max="70" inputmode="numeric" value="30"></div>
+  <div class="field"><label for="pRoom" data-en="Hospital room (per night)" data-id="Kamar rumah sakit (per malam)">Hospital room (per night)</label>
+    <select id="pRoom">
+      <option value="0" data-en="Any room limit" data-id="Semua limit kamar">Any room limit</option>
+      <option value="600000" data-en="Rp 600rb+ (standard)" data-id="Rp 600rb+ (standar)">Rp 600rb+ (standard)</option>
+      <option value="750000" data-en="Rp 750rb+ (single room)" data-id="Rp 750rb+ (kamar 1 bed)">Rp 750rb+ (single room)</option>
+      <option value="1200000" data-en="Rp 1,2jt+ (VIP)" data-id="Rp 1,2jt+ (VIP)">Rp 1,2jt+ (VIP)</option>
+      <option value="2500000" data-en="Rp 2,5jt (top tier)" data-id="Rp 2,5jt (tertinggi)">Rp 2,5jt (top tier)</option>
+    </select></div>
+  <div class="field"><label for="pOp" data-en="Outpatient (doctor visits)" data-id="Rawat jalan (kunjungan dokter)">Outpatient (doctor visits)</label>
+    <select id="pOp">
+      <option value="any" data-en="Show both" data-id="Tampilkan keduanya">Show both</option>
+      <option value="yes" data-en="Must include outpatient" data-id="Harus termasuk rawat jalan">Must include outpatient</option>
+      <option value="no" data-en="Inpatient only" data-id="Rawat inap saja">Inpatient only</option>
+    </select></div>
+  <button type="submit" class="btn btn-primary" id="goBtn" data-en="Show plans" data-id="Tampilkan plan">Show plans</button>
+</form>
 </div></section>
 
-<section class="section"><div class="wrap">
-  <!-- quick profile -> feeds the quote -->
-  <div class="filterbar">
-    <div class="field"><label data-en="Cover for" data-id="Perlindungan untuk">Cover for</label>
-      <select id="fScope"><option data-en="My employees (group)" data-id="Karyawan saya (kelompok)">My employees (group)</option><option data-en="Individual / family" data-id="Individu / keluarga">Individual / family</option></select></div>
-    <div class="field"><label data-en="Number of people" data-id="Jumlah peserta">Number of people</label>
-      <input id="fPeople" type="number" min="1" value="10"></div>
-    <div class="field"><label data-en="Average age" data-id="Rata-rata usia">Average age</label>
-      <select id="fAge"><option>0–18</option><option selected>19–30</option><option>31–40</option><option>41–55</option><option>56–60</option></select></div>
-    <div class="field"><a href="/quote?cover=eb" class="btn btn-primary" style="width:100%;justify-content:center" data-en="Compare & quote →" data-id="Bandingkan & penawaran →">Compare & quote →</a></div>
+<section style="padding:0 0 70px" id="results"><div class="wrap">
+  <button type="button" class="btn btn-ghost filters-toggle" id="filtersToggle" style="margin-top:22px" data-en="Filters" data-id="Filter">Filters</button>
+  <div class="cmp-layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="grp"><h4 data-en="Coverage type" data-id="Jenis perlindungan">Coverage type</h4>
+        <label class="chk locked"><input type="checkbox" checked disabled> <span data-en="Inpatient (hospitalisation)" data-id="Rawat inap">Inpatient (hospitalisation)</span></label>
+        <label class="chk"><input type="checkbox" id="fOp"> <span data-en="Outpatient (GP & specialist)" data-id="Rawat jalan (umum & spesialis)">Outpatient (GP & specialist)</span></label>
+      </div>
+      <div class="grp"><h4 data-en="Max budget per employee / year" data-id="Anggaran maks per karyawan / tahun">Max budget per employee / year</h4>
+        <input type="range" class="range" id="fBudget" min="1000000" max="17000000" step="250000" value="17000000">
+        <div class="rangeval" id="fBudgetVal"></div>
+      </div>
+      <div class="grp"><h4 data-en="Also interested in" data-id="Juga tertarik dengan">Also interested in</h4>
+        <label class="chk"><input type="checkbox" name="extra" value="Dental"> <span data-en="Dental" data-id="Gigi">Dental</span></label>
+        <label class="chk"><input type="checkbox" name="extra" value="Maternity"> <span data-en="Maternity" data-id="Melahirkan">Maternity</span></label>
+        <label class="chk"><input type="checkbox" name="extra" value="Optical"> <span data-en="Optical" data-id="Kacamata">Optical</span></label>
+        <label class="chk"><input type="checkbox" name="extra" value="Term life"> <span data-en="Term life" data-id="Asuransi jiwa">Term life</span></label>
+        <label class="chk"><input type="checkbox" name="extra" value="Personal accident"> <span data-en="Personal accident" data-id="Kecelakaan diri">Personal accident</span></label>
+        <small data-en="Not priced here. We add these to your request and quote them alongside your chosen plan." data-id="Belum ada harga di sini. Kami tambahkan ke permintaan Anda dan buatkan penawaran bersama plan pilihan Anda.">Not priced here. We add these to your request and quote them alongside your chosen plan.</small>
+      </div>
+    </aside>
+
+    <div>
+      <div class="reshead">
+        <div class="count" id="resCount"></div>
+        <select id="fSort" aria-label="Sort">
+          <option value="asc" data-en="Price: low to high" data-id="Harga: terendah">Price: low to high</option>
+          <option value="desc" data-en="Price: high to low" data-id="Harga: tertinggi">Price: high to low</option>
+          <option value="room" data-en="Room limit: highest first" data-id="Limit kamar: tertinggi">Room limit: highest first</option>
+        </select>
+      </div>
+      <p class="pricenote" data-en="Indicative annual premiums from the insurer's own rate card. Final price is set by the insurer on your member list." data-id="Premi tahunan indikatif dari tabel tarif resmi asuransi. Harga final ditetapkan asuransi berdasarkan data peserta Anda.">Indicative annual premiums from the insurer's own rate card. Final price is set by the insurer on your member list.</p>
+      <div id="planList"></div>
+
+      <h2 style="font-size:1.4rem;margin:40px 0 6px" data-en="More insurers we work with" data-id="Asuransi lain yang bekerja sama dengan kami">More insurers we work with</h2>
+      <p style="font-size:.92rem" data-en="No public rate card yet, so we request a price for you and compare it against the plans above." data-id="Belum ada tabel tarif publik, jadi kami mintakan harga untuk Anda dan bandingkan dengan plan di atas.">No public rate card yet, so we request a price for you and compare it against the plans above.</p>
+      <div class="req-grid" id="reqGrid"></div>
+
+      <div class="assume" style="margin-top:30px">
+        <strong data-en="How these prices work" data-id="Cara harga ini dihitung">How these prices work</strong>
+        <ul>
+          <li data-en="Each price is the insurer's per-person annual rate for your average age band (19–30, 31–40, 41–55, 56–60) times your number of employees." data-id="Setiap harga adalah tarif tahunan per orang dari asuransi untuk kelompok usia rata-rata Anda (19–30, 31–40, 41–55, 56–60) dikali jumlah karyawan.">Each price is the insurer's per-person annual rate for your average age band (19–30, 31–40, 41–55, 56–60) times your number of employees.</li>
+          <li data-en="The insurer prices the final policy member by member, so a team with a wide age spread may come out higher or lower." data-id="Asuransi menghitung polis final per peserta, sehingga tim dengan sebaran usia lebar bisa lebih tinggi atau lebih rendah.">The insurer prices the final policy member by member, so a team with a wide age spread may come out higher or lower.</li>
+          <li data-en="Hospital network counts come from the insurer's provider list in our <a href='/find-a-clinic'>clinic finder</a>." data-id="Jumlah jaringan rumah sakit berasal dari daftar provider asuransi di <a href='/find-a-clinic'>pencarian klinik</a> kami.">Hospital network counts come from the insurer's provider list in our <a href='/find-a-clinic'>clinic finder</a>.</li>
+          <li data-en="General information, not a binding offer. Your Insurewise advisor confirms exact benefits, exclusions and premium before you buy." data-id="Informasi umum, bukan penawaran mengikat. Penasihat Insurewise akan mengonfirmasi manfaat, pengecualian, dan premi sebelum Anda membeli.">General information, not a binding offer. Your Insurewise advisor confirms exact benefits, exclusions and premium before you buy.</li>
+        </ul>
+      </div>
+
+      <h2 style="font-size:1.4rem;margin:40px 0 14px" data-en="Questions" data-id="Pertanyaan">Questions</h2>
+      <details class="faq"><summary><span data-en="How are the prices calculated?" data-id="Bagaimana harga dihitung?">How are the prices calculated?</span><span>+</span></summary><p style="margin-top:12px" data-en="Each priced plan uses the insurer's own per-person annual rate for the age band that matches your workforce's average age, multiplied by the number of employees. The insurer calculates the final premium on your actual member list, so it can differ." data-id="Setiap plan menggunakan tarif tahunan per orang dari asuransi untuk kelompok usia yang sesuai dengan rata-rata usia karyawan Anda, dikalikan jumlah karyawan. Asuransi menghitung premi final berdasarkan daftar peserta sebenarnya, sehingga bisa berbeda.">Each priced plan uses the insurer's own per-person annual rate for the age band that matches your workforce's average age, multiplied by the number of employees. The insurer calculates the final premium on your actual member list, so it can differ.</p></details>
+      <details class="faq"><summary><span data-en="What does the room limit per night mean?" data-id="Apa arti limit kamar per malam?">What does the room limit per night mean?</span><span>+</span></summary><p style="margin-top:12px" data-en="It is the room and board amount the plan pays per night in hospital. Surgeon, specialist and ICU fees are usually scaled to the room class, so an employee who takes a room above their limit can face a much bigger bill than just the room difference. <a href='/insights/best-hospitals-jakarta-employee-benefits'>Read more</a>." data-id="Ini adalah biaya kamar dan makan yang dibayar plan per malam di rumah sakit. Biaya dokter bedah, spesialis, dan ICU biasanya mengikuti kelas kamar, sehingga karyawan yang naik kelas kamar bisa menanggung tagihan jauh lebih besar dari selisih kamar saja. <a href='/insights/best-hospitals-jakarta-employee-benefits'>Baca selengkapnya</a>.">It is the room and board amount the plan pays per night in hospital. Surgeon, specialist and ICU fees are usually scaled to the room class, so an employee who takes a room above their limit can face a much bigger bill than just the room difference. <a href='/insights/best-hospitals-jakarta-employee-benefits'>Read more</a>.</p></details>
+      <details class="faq"><summary><span data-en="Why do some insurers show 'price on request'?" data-id="Mengapa sebagian asuransi menampilkan 'harga sesuai permintaan'?">Why do some insurers show 'price on request'?</span><span>+</span></summary><p style="margin-top:12px" data-en="We only show instant prices where we hold the insurer's real rate card. For other partners, our advisor requests a quote for you and compares it against the plans listed here." data-id="Kami hanya menampilkan harga instan jika memiliki tabel tarif resmi dari asuransi. Untuk mitra lainnya, penasihat kami memintakan penawaran untuk Anda dan membandingkannya dengan plan di sini.">We only show instant prices where we hold the insurer's real rate card. For other partners, our advisor requests a quote for you and compares it against the plans listed here.</p></details>
+      <details class="faq"><summary><span data-en="Does this replace BPJS Kesehatan?" data-id="Apakah ini menggantikan BPJS Kesehatan?">Does this replace BPJS Kesehatan?</span><span>+</span></summary><p style="margin-top:12px" data-en="No. BPJS Kesehatan is mandatory. Private group cover sits on top of it with higher room limits and faster access to private hospitals. <a href='/insights/bpjs-vs-private-health-insurance-indonesia'>BPJS vs private explained</a>." data-id="Tidak. BPJS Kesehatan wajib. Asuransi kelompok swasta melengkapinya dengan limit kamar lebih tinggi dan akses lebih cepat ke rumah sakit swasta. <a href='/insights/bpjs-vs-private-health-insurance-indonesia'>Penjelasan BPJS vs swasta</a>.">No. BPJS Kesehatan is mandatory. Private group cover sits on top of it with higher room limits and faster access to private hospitals. <a href='/insights/bpjs-vs-private-health-insurance-indonesia'>BPJS vs private explained</a>.</p></details>
+    </div>
   </div>
-
-  <div class="cmp-grid" id="cmpGrid"></div>
-
-  <p class="disclaimer" style="color:var(--muted);margin-top:26px" data-en="Figures shown are general guidance and vary by plan, occupation and underwriting. They are not a binding offer — your Insurewise advisor confirms exact benefits and premiums. Insurer names and logos are shown to indicate the partners we place business with." data-id="Angka yang ditampilkan adalah panduan umum dan dapat berbeda tergantung plan, jenis usaha, dan underwriting. Bukan penawaran mengikat — penasihat Insurewise akan mengonfirmasi manfaat dan premi yang tepat. Nama dan logo asuransi ditampilkan untuk menunjukkan mitra tempat kami menempatkan bisnis.">Figures shown are general guidance and vary by plan, occupation and underwriting. They are not a binding offer — your Insurewise advisor confirms exact benefits and premiums. Insurer names and logos are shown to indicate the partners we place business with.</p>
 </div></section>
 
-<section class="section soft"><div class="wrap"><div class="ctaband">
-<h2 data-en="Not sure which insurer fits?" data-id="Belum yakin asuransi mana yang cocok?">Not sure which insurer fits?</h2>
-<p data-en="Tell us your team size and budget — we'll recommend the best match and handle the paperwork." data-id="Beri tahu kami ukuran tim dan anggaran Anda — kami akan merekomendasikan yang terbaik dan mengurus dokumennya.">Tell us your team size and budget — we'll recommend the best match and handle the paperwork.</p>
-<a href="/quote?cover=eb" class="btn btn-primary btn-lg" style="margin-top:14px" data-en="Get my quote" data-id="Dapatkan penawaran">Get my quote</a>
-</div></div></section>
+<!-- compare tray -->
+<div class="tray" id="tray"><div class="wrap">
+  <strong style="font-size:.9rem" data-en="Compare" data-id="Bandingkan">Compare</strong>
+  <div class="chips" id="trayChips"></div>
+  <button type="button" class="btn btn-blue" id="compareBtn" data-en="Compare side by side" data-id="Bandingkan berdampingan">Compare side by side</button>
+</div></div>
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="box">
+  <button type="button" class="x" id="modalX" aria-label="Close">×</button>
+  <h2 id="modalTitle" style="font-size:1.35rem" data-en="Side-by-side comparison" data-id="Perbandingan berdampingan">Side-by-side comparison</h2>
+  <p id="modalSub" style="font-size:.88rem"></p>
+  <div class="ctable-wrap" id="ctable"></div>
+</div></div>
 
 <footer class="site"><div class="wrap"><div class="fgrid">
 <div><img src="../assets/logo-white.png" alt="Insurewise" style="height:34px">
@@ -89,65 +262,6 @@
 </div></footer>
 
 <script src="../js/main.js"></script>
-<script>
-/* ===========================================================================
-   INSURER COMPARISON DATA — edit this list freely.
-   Fill in real, verified figures per brand. Use "" for anything you don't
-   want to show yet (it will render as "—"). Order = display order.
-   Fields:
-     name       : brand name shown on the card
-     limit      : max annual limit (e.g. "Rp 25 M")
-     hospitals  : partner hospital network (e.g. "7,400+")
-     entryAge   : max entry age (e.g. "65")
-     renewAge   : max renewal age (e.g. "80")
-     note_en/note_id : one-line highlight (optional)
-   The two marked //verify are from public listings — confirm before relying.
-=========================================================================== */
-// Figures below are from each insurer's public product pages / listings (2025-26)
-// and are INDICATIVE — they vary by plan and change over time. Verify before relying.
-var INSURERS = [
-  { name:"AXA",          limit:"Rp 25 M",      hospitals:"7,400+", entryAge:"65", renewAge:"80", note_en:"SmartCare Executive — wide network, high limits", note_id:"SmartCare Executive — jaringan luas, limit tinggi" },
-  { name:"Zurich",       limit:"Rp 2 M – 16 M",hospitals:"Nationwide + overseas", entryAge:"70", renewAge:"", note_en:"Pro-Care group plans, 4 tiers", note_id:"Plan kelompok Pro-Care, 4 tingkatan" },
-  { name:"Allianz",      limit:"",             hospitals:"AdMedika network", entryAge:"65", renewAge:"70", note_en:"SmartHealth group — from 10 members", note_id:"SmartHealth kelompok — mulai 10 peserta" },
-  { name:"Mandiri",      limit:"",             hospitals:"7,600+", entryAge:"", renewAge:"", note_en:"Mandiri Inhealth — large provider network", note_id:"Mandiri Inhealth — jaringan provider luas" },
-  { name:"AIA",          limit:"",             hospitals:"Extensive (AdMedika)", entryAge:"", renewAge:"", note_en:"Employee Benefit health & life", note_id:"Employee Benefit kesehatan & jiwa" },
-  { name:"Lippo (LGI)",  limit:"Rp 300 jt",    hospitals:"1,200+", entryAge:"60", renewAge:"65", note_en:"HealthPlus Business Essential", note_id:"HealthPlus Business Essential" },
-  { name:"ACA",          limit:"",             hospitals:"", entryAge:"64", renewAge:"", note_en:"Medi+ group — from 25 participants", note_id:"Medi+ kelompok — mulai 25 peserta" },
-  { name:"Hanwha",       limit:"",             hospitals:"", entryAge:"", renewAge:"", note_en:"Group health, premium from Rp395k/member", note_id:"Kesehatan kelompok, premi mulai Rp395rb/peserta" },
-  { name:"Sunday",       limit:"",             hospitals:"", entryAge:"", renewAge:"", note_en:"Digital group health — from 3 employees", note_id:"Kesehatan kelompok digital — mulai 3 karyawan" },
-  { name:"Tokio Marine", limit:"",             hospitals:"", entryAge:"", renewAge:"", note_en:"Life & employee benefits", note_id:"Asuransi jiwa & employee benefit" }
-];
-
-(function(){
-  var lang = (function(){ try{return localStorage.getItem('iw_lang')||'en';}catch(e){return 'en';} })();
-  var L = {
-    en:{ limit:"Annual limit", hospitals:"Partner hospitals", entry:"Max entry age", renew:"Max renewal age", quote:"Get this quote →", title:"Health insurance" },
-    id:{ limit:"Limit tahunan", hospitals:"RS rekanan", entry:"Usia masuk maks", renew:"Usia perpanjangan maks", quote:"Minta penawaran ini →", title:"Asuransi kesehatan" }
-  };
-  var has = function(v){ return v && String(v).trim(); };
-  var specRow = function(labelEn,labelId,val){
-    if(!has(val)) return '';
-    return '<div class="cmp-spec"><span class="k" data-en="'+labelEn+'" data-id="'+labelId+'">'+(lang==='id'?labelId:labelEn)+'</span><span class="v">'+val+'</span></div>';
-  };
-  var grid = document.getElementById('cmpGrid');
-  grid.innerHTML = INSURERS.map(function(b){
-    var note = (lang==='id'? b.note_id : b.note_en) || "";
-    var rows =
-      specRow('Annual limit','Limit tahunan',b.limit)+
-      specRow('Partner hospitals','RS rekanan',b.hospitals)+
-      specRow('Max entry age','Usia masuk maks',b.entryAge)+
-      specRow('Max renewal age','Usia perpanjangan maks',b.renewAge);
-    if(!rows){ rows = '<div class="cmp-spec"><span class="k" data-en="Plan details" data-id="Detail plan">'+(lang==='id'?'Detail plan':'Plan details')+'</span><span class="v" data-en="On request" data-id="Sesuai permintaan">'+(lang==='id'?'Sesuai permintaan':'On request')+'</span></div>'; }
-    return ''+
-    '<div class="cmp-card">'+
-      '<div class="cmp-logo">'+b.name+'</div>'+
-      '<h3 data-en="'+ (b.note_en||'Health insurance') +'" data-id="'+ (b.note_id||'Asuransi kesehatan') +'">'+ (note||'Health insurance') +'</h3>'+
-      rows+
-      '<a class="btn btn-blue" href="/quote?cover=eb" data-en="Get this quote →" data-id="Minta penawaran ini →">'+L[lang].quote+'</a>'+
-    '</div>';
-  }).join('');
-  // re-apply bilingual labels to the freshly injected nodes
-  if (window.iwSetLang) window.iwSetLang(lang);
-})();
-</script>
+<script src="../js/plans-data.js"></script>
+<script src="../js/compare.js"></script>
 </body></html>

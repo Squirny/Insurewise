@@ -309,4 +309,16 @@
     var pre=document.querySelector('[data-group="cover"] .opt[data-val="'+state.cover+'"]');
     if(pre){ pre.click(); }
   }
+  // Prefill Employee Benefits fields when arriving from the plan comparator
+  // (/quote?cover=eb&count=33&age=19-30&ri=RI750&rj=RJ50)
+  if(state.cover==='eb'){
+    var setIf=function(id,val){ var el=document.getElementById(id); if(!el||val===null) return;
+      if(el.tagName==='SELECT'){ if(Array.prototype.some.call(el.options,function(o){return o.value===val;})) el.value=val; }
+      else el.value=val; };
+    if(params.get('count')) setIf('ebCount', String(Math.max(1,parseInt(params.get('count'),10)||1)));
+    setIf('ebAge', params.get('age'));
+    setIf('ebRI', params.get('ri'));
+    if(params.has('rj')) setIf('ebRJ', params.get('rj'));
+    if(params.get('plan')){ var nb=document.querySelector('[data-step="1"] [data-next]'); if(nb) nb.click(); }
+  }
 })();
