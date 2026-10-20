@@ -1,6 +1,7 @@
 # 301 legacy .html paths -> canonical clean URLs
 
 /about.html  /about  301
+/bali.html  /bali  301
 /find-a-clinic.html  /find-a-clinic  301
 /index.html  /  301
 /insights.html  /insights  301
